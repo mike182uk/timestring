@@ -2,7 +2,7 @@
 
     "use strict";
 
-    this.Timestring = function(settings) {
+    var Timestring = function(settings) {
         // default settings
         var defaults = {
             hoursPerDay: 24,
