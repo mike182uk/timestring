@@ -1,8 +1,8 @@
-!function(window){
+(function(){
 
     "use strict";
 
-    window.Timestring = function(settings) {
+    this.Timestring = function(settings) {
         // default settings
         var defaults = {
             hoursPerDay: 24,
@@ -99,4 +99,4 @@
         return (new Timestring(settings)).parse(this, unit);
     }
 
-}(window);
+}).call(this);
