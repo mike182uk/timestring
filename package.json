@@ -1,5 +1,5 @@
 {
-  "name"          : "timestring.js",
+  "name"          : "timestring",
   "description"   : "Parse a human readable time string into a time based value",
   "homepage"      : "https://github.com/mike182uk/timestring",
   "keywords"      : ["util", "functional", "time"],
