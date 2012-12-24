@@ -1,6 +1,6 @@
-#timestring.js
+#timestring
 
-timestring.js attempts to parse a human readable time string into a time based value.
+Attempts to parse a human readable time string into a time based value.
 
 ##Overview
 
@@ -11,7 +11,7 @@ var time = str.parseTime();
 console.log(time); // will log 4500
 ```
 
-In the example above `str` is just a plain old `String` object. timestring.js adds a new method to the `String` objects prototype named `parseTime`. This method parses the string and returns a time based value.
+In the example above `str` is just a plain old `String` object. A new method to the `String` objects prototype named `parseTime`. This method parses the string and returns a time based value.
 
 **By default the returned time value will be in seconds.**
 
@@ -44,7 +44,7 @@ console.log(time); // will log 4500
 
 ##Keywords
 
-timestring.js will parse the following keywords into time values:
+timestring will parse the following keywords into time values:
 
 1. `s, sec, secs, second, seconds` - will parse to seconds
 2. `m, min, mins, minute, minutes` - will parse to minutes
@@ -91,7 +91,7 @@ var weeks = (new Timestring()).parse(str, 'w'); // 0.13253968253968254
 
 ##Optional Configuration
 
-timestring.js makes a few assumptions:
+A few assumptions are made by default:
 
 1. There are 24 hours per day
 2. There are 7 days per week
@@ -153,3 +153,30 @@ var hoursToday = (new Timestring(settings)).parse(today, 'h'),
 console.log(hoursToday); // will log 7.5
 console.log(daysThisWeek); // will log 5
 ```
+
+##Installation
+
+### Browser
+
+All you need to do to get timestring working in the browser is download / clone this repo and make sure you include the `timestring.js` script on your page:
+
+```html
+<script src="<path-to-src>/timestring.js"></script>
+```
+### Node.js
+
+Timestring is also node compatible. To install for a project, navigate to the projects root folder and in your terminal and type the following: 
+
+```
+npm install timestring
+```
+
+You may need to use `sudo` if you get errors.
+
+In your node application you need to require the timestirng module:
+
+```js
+var Timestring = require('timestring');
+```
+
+Once you have done this, you will beable to use timestring in node, the same way you do in the browser!
