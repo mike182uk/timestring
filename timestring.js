@@ -100,11 +100,8 @@
     }
 
     // export Timestring object for either the browser or node.js
-    if (typeof exports !== 'undefined') {
-        if (typeof module !== 'undefined' && module.exports) {
-            exports = module.exports = Timestring;
-        }
-        exports.Timestring = Timestring;
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = Timestring;
     }
     else {
         this.Timestring = Timestring;
