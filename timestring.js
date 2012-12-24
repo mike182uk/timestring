@@ -99,4 +99,15 @@
         return (new Timestring(settings)).parse(this, unit);
     }
 
+    // export Timestring object for either the browser or node.js
+    if (typeof exports !== 'undefined') {
+        if (typeof module !== 'undefined' && module.exports) {
+            exports = module.exports = Timestring;
+        }
+        exports.Timestring = Timestring;
+    }
+    else {
+        this.Timestring = Timestring;
+    }
+
 }).call(this);
