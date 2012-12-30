@@ -77,7 +77,7 @@
 
         // split string into groups and get total seconds for each group
         var groups = string
-                        .replace(/[^\w+-]+/g, '') // remove white space
+                        .replace(/[^\.\w+-]+/g, '') // remove white space
                         .match(/[-+]?[0-9]*\.?[0-9]+\D/g); // match time groups (digit followed by time unit - i.e 5d 15m = 2 time groups)
 
         if (groups !== null) {
