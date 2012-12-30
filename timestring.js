@@ -47,15 +47,26 @@
         // reference to this
         var self = this;
 
+        // get unit key helper
+        function getUnitKey(unit) {
+            for (var key in self.units) {
+                for (var u in self.units[key]) {
+                    if (unit === self.units[key][u]) {
+                        return key;
+                    }
+                }
+            }
+        }
+
         // convert a value to a specific unit
         function convert(value, unit) {
-            var baseValue = self.unitValues[unit];
+            var baseValue = self.unitValues[getUnitKey(unit)];
             return value / baseValue;
         }
 
         // get a value in seconds based on a specific unit
         function getSeconds(value, unit) {
-            var baseValue = self.unitValues[unit];
+            var baseValue = self.unitValues[getUnitKey(unit)];
             return value * baseValue;
         }
 
@@ -70,8 +81,8 @@
         if (groups !== null) {
             for(var group in groups) {
                 var g = groups[group],
-                    value = g.match(/[0-9]+/g),
-                    unit = g.match(/[a-z]+/g);
+                    value = g.match(/[0-9]+/g)[0],
+                    unit = g.match(/[a-z]+/g)[0];
 
                 totalSeconds += getSeconds(value, unit);
             }
