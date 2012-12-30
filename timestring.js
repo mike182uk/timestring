@@ -79,7 +79,7 @@
         // split string into groups and get total seconds for each group
         var groups = string
                         .toLowerCase() // convert words to lower case
-                        .replace(/[^\w+-]+/g, '') // remove white space
+                        .replace(/[^\.\w+-]+/g, '') // remove white space
                         .match(/[-+]?[0-9]+[a-z]+/g); // match time groups (digit followed by time unit - i.e 5d 15m = 2 time groups)
 
         if (groups !== null) {
