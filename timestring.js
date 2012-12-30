@@ -56,6 +56,9 @@
                     }
                 }
             }
+
+            // throw exception if invalid unit is passed
+            throw 'The unit [' + unit + '] is not supported by timestring';
         }
 
         // convert a value to a specific unit
