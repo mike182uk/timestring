@@ -62,19 +62,6 @@
         // seconds counter
         var totalSeconds = 0;
 
-        // dynamically generate units regular expression
-        var unitsRegExp = '';
-
-        for(var unit in this.units) {
-            unitsRegExp += ',' + this.units[unit].join();
-        }
-
-        unitsRegExp = '(' +
-            unitsRegExp
-                .replace(/,/g, '|') // convert commas to pipes
-                .replace('|', '') // removing leading pipe
-            + ')';
-
         // split string into groups and get total seconds for each group
         var groups = string
                         .replace(/[^\w+-]+/g, '') // remove white space
