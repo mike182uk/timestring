@@ -6,5 +6,5 @@
   "author"        : "Mike Barrett <mike182uk@gmail.com",
   "repository"    : {"type": "git", "url": "git://github.com/mike182uk/timestring.git"},
   "main"          : "timestring.js",
-  "version"       : "1.0.0"
+  "version"       : "1.0.1"
 }

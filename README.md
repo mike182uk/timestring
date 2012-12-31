@@ -27,7 +27,7 @@ console.log(time); // will log 98718
 and can be as messy as you like:
 
 ```js
-var str = '1 d    3h 25              m         1   8s';
+var str = '1 d    3HOurS 25              min         1   8s';
 var time = str.parseTime();
 
 console.log(time); // will log 98718
@@ -165,7 +165,7 @@ All you need to do to get timestring working in the browser is download / clone 
 ```
 ### Node.js
 
-Timestring is also node compatible. To install for a project, navigate to the projects root folder and in your terminal and type the following: 
+Timestring is also node compatible. To install for a project, navigate to the projects root folder and in your terminal and type the following:
 
 ```
 npm install timestring
