@@ -83,11 +83,10 @@
                         .match(/[-+]?[0-9]+[a-z]+/g); // match time groups (digit followed by time unit - i.e 5d 15m = 2 time groups)
 
         if (groups !== null) {
-            for(var group in groups) {
-                var g = groups[group],
+            for( var i = 0; i < groups.length; i++ ) {
+                var g = groups[i],
                     value = g.match(/[0-9]+/g)[0],
                     unit = g.match(/[a-z]+/g)[0];
-
                 totalSeconds += getSeconds(value, unit);
             }
         }
