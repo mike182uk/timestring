@@ -1,5 +1,4 @@
 (function(){
-
     "use strict";
 
     var Timestring = function(settings) {
@@ -83,10 +82,11 @@
                         .match(/[-+]?[0-9]+[a-z]+/g); // match time groups (digit followed by time unit - i.e 5d 15m = 2 time groups)
 
         if (groups !== null) {
-            for( var i = 0; i < groups.length; i++ ) {
-                var g = groups[i],
-                    value = g.match(/[0-9]+/g)[0],
-                    unit = g.match(/[a-z]+/g)[0];
+            for(var i = 0; i < groups.length; i++) {
+                var g = groups[i];
+                var value = g.match(/[0-9]+/g)[0];
+                var unit = g.match(/[a-z]+/g)[0];
+
                 totalSeconds += getSeconds(value, unit);
             }
         }
@@ -95,12 +95,12 @@
         return (returnUnit) ? convert(totalSeconds, returnUnit) : totalSeconds;
     }
 
-    // add convenience method to string proto
+    // add convenience method to string prototype
     String.prototype.parseTime = function (unit, settings) {
         return (new Timestring(settings)).parse(this, unit);
     }
 
-    // export Timestring object for either the browser or node.js
+    // export Timestring object for either the browser or node
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = Timestring;
     }
