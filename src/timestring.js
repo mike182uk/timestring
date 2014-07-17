@@ -44,14 +44,14 @@
 
   Timestring.prototype.parse = function(string, returnUnit) {
     // reference to this
-    var self = this;
+    var that = this;
 
     // get unit key helper
     function getUnitKey(unit) {
-      for (var key in self.units) {
-        for (var u in self.units[key]) {
-          if (unit === self.units[key][u]) {
-            return key;
+      for (var k in that.units) {
+        for (var u in that.units[k]) {
+          if (unit === that.units[k][u]) {
+            return k;
           }
         }
       }
@@ -62,14 +62,14 @@
 
     // convert a value to a specific unit
     function convert(value, unit) {
-      var baseValue = self.unitValues[getUnitKey(unit)];
+      var baseValue = that.unitValues[getUnitKey(unit)];
 
       return value / baseValue;
     }
 
     // get a value in seconds based on a specific unit
     function getSeconds(value, unit) {
-      var baseValue = self.unitValues[getUnitKey(unit)];
+      var baseValue = that.unitValues[getUnitKey(unit)];
 
       return value * baseValue;
     }
@@ -102,7 +102,7 @@
     return (new Timestring(settings)).parse(this, unit);
   };
 
-  // export Timestring object for either the browser or node
+  // export Timestring object
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Timestring;
   }
