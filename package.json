@@ -1,12 +1,19 @@
 {
-  "name" : "timestring",
-  "description" : "Parse a human readable time string into a time based value",
-  "homepage" : "https://github.com/mike182uk/timestring",
-  "author" : "Michael David Barrett <mike182uk@gmail.com>",
-  "repository" : {
+  "name": "timestring",
+  "description": "Parse a human readable time string into a time based value",
+  "homepage": "https://github.com/mike182uk/timestring",
+  "author": "Michael David Barrett <mike182uk@gmail.com>",
+  "repository": {
     "type": "git",
     "url": "git://github.com/mike182uk/timestring.git"
   },
-  "main" : "timestring.js",
-  "version" : "1.0.2"
+  "main": "timestring.js",
+  "version": "1.0.2",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.0",
+    "load-grunt-tasks": "^0.6.0",
+    "time-grunt": "^0.4.0"
+  }
 }
