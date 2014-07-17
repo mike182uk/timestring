@@ -11,16 +11,10 @@
     };
 
     // merge default settings with user settings
-    var settings = settings || {};
+    settings = settings || {};
     this.settings = {};
-
-    for (var property in defaults) {
-      this.settings[property] = defaults[property];
-    }
-
-    for (var property in settings) {
-      this.settings[property] = settings[property];
-    }
+    for (var d in defaults) { this.settings[d] = defaults[d]; }
+    for (var s in settings) { this.settings[s] = settings[s]; }
 
     // time units
     this.units = {
@@ -101,12 +95,12 @@
 
     // return total, convert if needed
     return (returnUnit) ? convert(totalSeconds, returnUnit) : totalSeconds;
-  }
+  };
 
   // add convenience method to string prototype
   String.prototype.parseTime = function (unit, settings) {
     return (new Timestring(settings)).parse(this, unit);
-  }
+  };
 
   // export Timestring object for either the browser or node
   if (typeof module !== 'undefined' && module.exports) {
