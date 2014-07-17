@@ -22,10 +22,20 @@ module.exports = function(grunt) {
       files: [
         'Gruntfile.js',
         'src/**/*.js',
+        'test/**/*.js'
       ]
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/**/*.js']
+      }
     }
   });
 
   // user defined tasks
-  grunt.registerTask('default', ['jshint', 'uglify']);
+  grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('default', ['jshint', 'mochaTest', 'uglify']);
 };
