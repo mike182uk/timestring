@@ -1,2 +1,6 @@
 test
-node_modules
+.editorconfig
+.jshintrc
+Gruntfile.js
+.DS_Store
+dist
