@@ -38,7 +38,7 @@
     this.unitValues.d = this.settings.hoursPerDay * this.unitValues.h;
     this.unitValues.w = this.settings.daysPerWeek * this.unitValues.d;
     this.unitValues.mth = this.settings.weeksPerMonth * this.unitValues.w;
-    this.unitValues.y = this.settings.monthsPerYear * this.unitValues.w;
+    this.unitValues.y = this.settings.monthsPerYear * this.unitValues.mth;
   };
 
   Timestring.prototype.parse = function(string, returnUnit) {
