@@ -14,3 +14,4 @@
 - Added minified distributable version
 - Updated package.json
 - Added bower config
+- Added travis config
