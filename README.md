@@ -1,5 +1,9 @@
 #Timestring
 
+[![Build Status](https://travis-ci.org/mike182uk/timestring.svg?branch=master)](https://travis-ci.org/mike182uk/timestring)
+
+[![NPM](https://nodei.co/npm/timestring.png?downloads=true&stars=true)](https://nodei.co/npm/timestring/)
+
 Attempts to parse a human readable time string into a time based value.
 
 ##Overview
@@ -158,11 +162,18 @@ console.log(daysThisWeek); // will log 5
 
 ###Browser
 
-All you need to do to get timestring working in the browser is download / clone this repo and make sure you include the `timestring.js` script on your page:
+All you need to do to get timestring working in the browser is download / clone this repo and make sure you include the `dist/timestring.min.js` script on your page:
 
 ```html
-<script src="<path-to-src>/timestring.js"></script>
+<script src="<path-to-src>/timestring.min.js"></script>
 ```
+
+Alternatively you can you use bower to manage this dependency for you:
+
+```
+bower install timestring --save
+```
+
 ###Node
 
 To install for a node application, navigate to the projects root folder and in your terminal type the following:
