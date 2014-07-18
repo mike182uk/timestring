@@ -12,8 +12,7 @@
 
     // merge default settings with user settings
     settings = settings || {};
-    this.settings = {};
-    for (var d in defaults) { this.settings[d] = defaults[d]; }
+    this.settings = defaults;
     for (var s in settings) { this.settings[s] = settings[s]; }
 
     // time units
@@ -56,8 +55,8 @@
         }
       }
 
-      // throw exception if invalid unit is passed
-      throw 'The unit [' + unit + '] is not supported by timestring';
+      // throw error if invalid unit was passed
+      throw new Error('The unit [' + unit + '] is not supported by timestring');
     }
 
     // convert a value to a specific unit

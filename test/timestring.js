@@ -3,7 +3,15 @@ var expect = chai.expect;
 var timestring = require('../timestring');
 
 describe('timestring', function() {
-  it('should expose a method on String.prototype that will attempt to parse the string as a timestring', function(done){
+  it('throws an error when an invalid unit is used in the timestring', function(done) {
+    var ts = new timestring();
+
+    expect(ts.parse.bind(ts, '1g')).to.throw(Error);
+
+    done();
+  });
+
+  it('should expose a method on String.prototype that will parse the string as a timestring', function(done){
     var str = '1min';
 
     // no arguments passed
