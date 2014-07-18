@@ -1,1 +1,5 @@
 test
+.editorconfig
+.jshintrc
+Gruntfile.js
+.DS_Store
