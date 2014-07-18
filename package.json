@@ -8,7 +8,7 @@
     "url": "git://github.com/mike182uk/timestring.git"
   },
   "main": "timestring.js",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "devDependencies": {
     "chai": "^1.9.1",
     "grunt": "^0.4.5",

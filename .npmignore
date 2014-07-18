@@ -3,4 +3,3 @@ test
 .jshintrc
 Gruntfile.js
 .DS_Store
-dist
