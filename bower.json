@@ -10,6 +10,10 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "CHANGELOG.md",
+    "Gruntfile.js",
+    "LICENSE",
+    "README.md",
     "node_modules",
     "test"
   ]

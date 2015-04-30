@@ -1,7 +1,21 @@
 language: node_js
+
 node_js:
+  - "0.6"
+  - "0.8"
   - "0.10"
   - "0.11"
+  - "0.12"
+  - "iojs"
+  - "iojs-v1.0.4"
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
 before_script:
   - npm install -g grunt-cli
+
 script: grunt test
