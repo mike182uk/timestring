@@ -1,7 +1,7 @@
 {
   "name": "timestring",
-  "main": "timestring.js",
-  "version": "1.1.0",
+  "main": "dist/timestring.js",
+  "version": "2.0.0",
   "description": "Parse a human readable time string into a time based value",
   "homepage": "https://github.com/mike182uk/timestring",
   "authors": [
@@ -10,11 +10,12 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "node_modules",
+    "test",
     "CHANGELOG.md",
-    "Gulpfile.js",
     "LICENSE",
     "README.md",
-    "node_modules",
-    "test"
+    "Gulpfile.js",
+    "package.json"
   ]
 }
