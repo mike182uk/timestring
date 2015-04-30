@@ -11,7 +11,7 @@
   "ignore": [
     "**/.*",
     "CHANGELOG.md",
-    "Gruntfile.js",
+    "Gulpfile.js",
     "LICENSE",
     "README.md",
     "node_modules",

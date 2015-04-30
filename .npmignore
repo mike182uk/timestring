@@ -1,10 +1,11 @@
 .editorconfig
 .gitignore
 .jshintrc
+.jscsrc
 .travis.yml
 bower.json
 CHANGELOG.md
-Gruntfile.js
+Gulpfile.js
 LICENSE
 README.md
 /test/
