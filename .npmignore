@@ -4,8 +4,8 @@
 .jscsrc
 .travis.yml
 bower.json
-CHANGELOG.md
 Gulpfile.js
 LICENSE
 README.md
+CHANGELOG.md
 /test/

@@ -1,7 +1,7 @@
 {
   "name": "timestring",
   "main": "dist/timestring.js",
-  "version": "2.0.0",
+  "version": "1.1.1",
   "description": "Parse a human readable time string into a time based value",
   "homepage": "https://github.com/mike182uk/timestring",
   "authors": [
