@@ -7,15 +7,5 @@
   "authors": [
     "Michael David Barrett <mike182uk@gmail.com>"
   ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "test",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md",
-    "Gulpfile.js",
-    "package.json"
-  ]
+  "license": "MIT"
 }

@@ -3,22 +3,24 @@ var $ = require('gulp-load-plugins')({
   scope: 'devDependencies'
 });
 
-var runSequence = require('run-sequence');
+var browserify = require('browserify');
 var del = require('del');
+var runSequence = require('run-sequence');
+var source = require('vinyl-source-stream');
 
 gulp.task('static-analysis:lint', function () {
-  gulp.src('src/**/*.js')
+  gulp.src('src/timestring.js')
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('static-analysis:cs', function () {
-  return gulp.src('src/**/*.js')
+  return gulp.src('src/timestring.js')
     .pipe($.jscs());
 });
 
 gulp.task('test', function () {
-  return gulp.src('test/**/*.js', { read: false })
+  return gulp.src('test/timestring.js', { read: false })
     .pipe($.mocha());
 });
 
@@ -26,33 +28,47 @@ gulp.task('build:clean', function (callback) {
   del(['build/**/*'], callback);
 });
 
-gulp.task('build:copy-src-to-build', function () {
-  return gulp.src('src/**/*.js')
+gulp.task('build:transpile', function () {
+  return gulp.src('src/timestring.js')
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build:copy-build-to-dist', function () {
-  return gulp.src('build/**/*.js')
+gulp.task('build:lib', function () {
+  return gulp.src('build/timestring.js')
+    .pipe(gulp.dest('dist/lib'));
+});
+
+gulp.task('build:browserify', function() {
+  return browserify('./build/timestring.js', { standalone: 'Timestring', debug: true })
+    .bundle()
+    .on('error', function(e){
+        console.log(e.message);
+
+        this.emit('end');
+    })
+    .pipe(source('timestring.js'))
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('build:minify', function () {
-  return gulp.src('build/**/*.js')
-    .pipe($.sourcemaps.init())
+  return gulp.src('build/timestring.js')
     .pipe($.uglify())
     .pipe($.rename({
       extname: '.min.js'
     }))
-    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('build', function (callback) {
   runSequence(
-    ['static-analysis:lint', 'static-analysis:cs', 'test'],
+    ['static-analysis:lint', 'static-analysis:cs'],
     'build:clean',
-    'build:copy-src-to-build',
-    'build:copy-build-to-dist',
+    'build:transpile',
+    'test',
+    ['build:lib', 'build:browserify'],
     'build:minify',
     callback
   );
@@ -60,6 +76,13 @@ gulp.task('build', function (callback) {
 
 gulp.task('sa', ['static-analysis:lint', 'static-analysis:cs']);
 
-gulp.task('ci', ['static-analysis:lint', 'static-analysis:cs', 'test']);
+gulp.task('ci', function (callback) {
+  runSequence(
+    ['static-analysis:lint', 'static-analysis:cs'],
+    'build:clean',
+    'build:transpile',
+    'test'
+  );
+});
 
 gulp.task('default', ['build']);
