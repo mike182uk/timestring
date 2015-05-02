@@ -1,10 +1,11 @@
 #Timestring
 
-[![Build Status](https://travis-ci.org/mike182uk/timestring.svg?branch=master)](https://travis-ci.org/mike182uk/timestring)
+[![Build Status](https://img.shields.io/travis/mike182uk/timestring.svg?style=flat-square)](http://travis-ci.org/mike182uk/timestring)
+[![Coveralls](https://img.shields.io/coveralls/mike182uk/timestring.svg?style=flat-square)](https://coveralls.io/r/mike182uk/timestring)
+[![npm](https://img.shields.io/npm/dm/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
+[![License](https://img.shields.io/github/license/mike182uk/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
 
-[![NPM](https://nodei.co/npm/timestring.png?downloads=true&stars=true)](https://nodei.co/npm/timestring/)
-
-Attempts to parse a human readable time string into a time based value.
+Parse a human readable time string into a time based value.
 
 ##Overview
 
@@ -165,12 +166,12 @@ console.log(daysThisWeek); // will log 5
 All you need to do to get timestring working in the browser is download / clone this repo and make sure you include the `dist/timestring.min.js` script on your page:
 
 ```html
-<script src="<path-to-src>/timestring.min.js"></script>
+<script src="<path-to-src>/dist/timestring.min.js"></script>
 ```
 
 Alternatively you can you use bower to manage this dependency for you:
 
-```
+```bash
 bower install timestring --save
 ```
 
@@ -178,16 +179,12 @@ bower install timestring --save
 
 To install for a node application, navigate to the projects root folder and in your terminal type the following:
 
+```bash
+npm install timestring --save
 ```
-npm install timestring
-```
-
-You may need to use `sudo` if you get errors.
 
 In your node application you need to require the timestring module:
 
 ```js
 var Timestring = require('timestring');
 ```
-
-Once you have done this, you will be able to use timestring in your node application, the same way you do in the browser!
