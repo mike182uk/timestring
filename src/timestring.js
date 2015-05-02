@@ -88,7 +88,3 @@ export default class Timestring {
     return convert(totalSeconds, returnUnit);
   }
 }
-
-String.prototype.parseTime = function (unit, settings) {
-  return (new Timestring(settings)).parse(this, unit);
-};

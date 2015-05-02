@@ -9,13 +9,13 @@ var runSequence = require('run-sequence');
 var source = require('vinyl-source-stream');
 
 gulp.task('static-analysis:lint', function () {
-  gulp.src('src/timestring.js')
+  gulp.src('src/**/*.js')
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('static-analysis:cs', function () {
-  return gulp.src('src/timestring.js')
+  return gulp.src('src/**/*.js')
     .pipe($.jscs());
 });
 
@@ -29,8 +29,9 @@ gulp.task('build:clean', function (callback) {
 });
 
 gulp.task('build:transpile', function () {
-  return gulp.src('src/timestring.js')
+  return gulp.src(['src/Timestring.js', 'src/String.parseTime.js'])
     .pipe($.sourcemaps.init())
+    .pipe($.concat('timestring.js'))
     .pipe($.babel())
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('build'));
