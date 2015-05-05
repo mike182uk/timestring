@@ -55,11 +55,13 @@ gulp.task('build:browserify', function() {
 });
 
 gulp.task('build:minify', function () {
-  return gulp.src('./build/timestring.js')
+  return gulp.src('./dist/timestring.js')
+    .pipe($.sourcemaps.init({ loadMaps: true }))
     .pipe($.uglify())
     .pipe($.rename({
       extname: '.min.js'
     }))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist'));
 });
 
