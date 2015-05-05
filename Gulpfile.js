@@ -9,37 +9,37 @@ var runSequence = require('run-sequence');
 var source = require('vinyl-source-stream');
 
 gulp.task('static-analysis:lint', function () {
-  gulp.src('src/**/*.js')
+  gulp.src('./src/**/*.js')
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('static-analysis:cs', function () {
-  return gulp.src('src/**/*.js')
+  return gulp.src('./src/**/*.js')
     .pipe($.jscs());
 });
 
 gulp.task('test', function () {
-  return gulp.src('test/timestring.js', { read: false })
+  return gulp.src('./test/timestring.js', { read: false })
     .pipe($.mocha());
 });
 
 gulp.task('build:clean', function (callback) {
-  del(['build/**/*'], callback);
+  del(['./build/**/*'], callback);
 });
 
 gulp.task('build:transpile', function () {
-  return gulp.src(['src/Timestring.js', 'src/String.parseTime.js'])
+  return gulp.src(['./src/Timestring.js', './src/String.parseTime.js'])
     .pipe($.sourcemaps.init())
     .pipe($.concat('timestring.js'))
     .pipe($.babel())
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('./build'));
 });
 
 gulp.task('build:lib', function () {
-  return gulp.src('build/timestring.js')
-    .pipe(gulp.dest('dist/lib'));
+  return gulp.src('./build/timestring.js')
+    .pipe(gulp.dest('./dist/lib'));
 });
 
 gulp.task('build:browserify', function() {
@@ -55,7 +55,7 @@ gulp.task('build:browserify', function() {
 });
 
 gulp.task('build:minify', function () {
-  return gulp.src('build/timestring.js')
+  return gulp.src('./build/timestring.js')
     .pipe($.uglify())
     .pipe($.rename({
       extname: '.min.js'
