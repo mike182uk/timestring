@@ -50,7 +50,7 @@ export default class Timestring {
       }
 
       // throw error if invalid unit was passed
-      throw new Error( "The unit [" + unit + "] is not supported by timestring" );
+      throw new Error( `The unit ${unit} is not supported by timestring` );
     };
 
     // convert a value to a specific unit
