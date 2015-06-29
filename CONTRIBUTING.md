@@ -6,11 +6,11 @@ Contributions can be made via a Pull Request on [Github](https://github.com/mike
 
 ##Pull Requests
 
-- **[jQuery coding style](https://contribute.jquery.org/style-guide/js/)** - [JSCS](http://jscs.info/). Make sure you run `gulp sa` before commiting your code.
+- **[jQuery coding style](https://contribute.jquery.org/style-guide/js/)** - [JSCS](http://jscs.info/). Make sure you run `gulp sa` before committing your code.
 
 - **Add tests where appropriate** - [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/)
 
-- **Document any change in behaviour** - Make sure the README and any other relevant documentation are kept up-to-date.
+- **Document any change in behavior** - Make sure the README and any other relevant documentation are kept up-to-date.
 
 - **Create topic branches** - i.e `feature/some-awesome-feature`.
 
