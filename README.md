@@ -1,6 +1,7 @@
 #Timestring
 
 [![Build Status](https://img.shields.io/travis/mike182uk/timestring.svg?style=flat-square)](http://travis-ci.org/mike182uk/timestring)
+[![Code Climate](https://img.shields.io/codeclimate/github/mike182uk/timestring.svg?style=flat-square)](https://codeclimate.com/github/mike182uk/timestring)
 [![Coveralls](https://img.shields.io/coveralls/mike182uk/timestring/master.svg?style=flat-square)](https://coveralls.io/r/mike182uk/timestring)
 [![npm](https://img.shields.io/npm/dm/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
 [![License](https://img.shields.io/github/license/mike182uk/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)

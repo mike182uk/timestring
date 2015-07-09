@@ -1,0 +1,7 @@
+languages:
+  JavaScript: true
+
+exclude_paths:
+  - Gulpfile.js
+  - test/*
+  - dist/*
