@@ -13,6 +13,10 @@ cache:
   directories:
     - node_modules
 
+env:
+  global:
+    - secure: dILRjgEPjnDy8wcqSkKS4KoxSykeffpReeiRXcXNK9iJvoxNQpfEycVuC7eG4KmdHdLj8RmrPIHE3S2x+su7LD5Nly/StaxfYTWIi1++3wSLP+SlDdv9h+uy2uA6bMsP4hys2ArQ+i/P5V4r5zq1iLIf3mavIchNwTT3ThhOIso=
+
 script: gulp ci
 
 after_script:
