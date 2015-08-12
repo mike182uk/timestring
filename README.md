@@ -1,5 +1,6 @@
-#Timestring
+# Timestring
 
+[![Version](https://img.shields.io/npm/v/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
 [![Build Status](https://img.shields.io/travis/mike182uk/timestring.svg?style=flat-square)](http://travis-ci.org/mike182uk/timestring)
 [![Code Climate](https://img.shields.io/codeclimate/github/mike182uk/timestring.svg?style=flat-square)](https://codeclimate.com/github/mike182uk/timestring)
 [![Coveralls](https://img.shields.io/coveralls/mike182uk/timestring/master.svg?style=flat-square)](https://coveralls.io/r/mike182uk/timestring)
@@ -8,7 +9,7 @@
 
 Parse a human readable time string into a time based value.
 
-##Overview
+## Overview
 
 ```js
 var str = '1h 15m';
@@ -48,7 +49,7 @@ var time = (new Timestring()).parse(str);
 console.log(time); // will log 4500
 ```
 
-##Keywords
+## Keywords
 
 Timestring will parse the following keywords into time values:
 
@@ -69,7 +70,7 @@ var time = str.parseTime();
 console.log(time); // will log 141615
 ```
 
-##Return Time Value
+## Return Time Value
 
 By default the return time value will be in seconds. This can be changed by passing one of the following strings as an argument to `String.parseTime` or `Timestring.parse`:
 
@@ -95,7 +96,7 @@ var days = (new Timestring()).parse(str, 'd'); // 0.9277777777777778
 var weeks = (new Timestring()).parse(str, 'w'); // 0.13253968253968254
 ```
 
-##Optional Configuration
+## Optional Configuration
 
 A few assumptions are made by default:
 
@@ -160,9 +161,9 @@ console.log(hoursToday); // will log 7.5
 console.log(daysThisWeek); // will log 5
 ```
 
-##Installation
+## Installation
 
-###Browser
+### Browser
 
 All you need to do to get timestring working in the browser is download / clone this repo and make sure you include the `dist/timestring.min.js` script on your page:
 
@@ -176,7 +177,7 @@ Alternatively you can you use bower to manage this dependency for you:
 bower install timestring --save
 ```
 
-###Node
+### Node
 
 To install for a node application, navigate to the projects root folder and in your terminal type the following:
 
