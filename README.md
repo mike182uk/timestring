@@ -8,7 +8,29 @@
 
 Parse a human readable time string into a time based value.
 
-## Overview
+## Installation
+
+### Browser
+
+```bash
+bower install --save timestring
+```
+
+Then add a reference to the script in your HTML:
+
+```html
+<script src="<path-to-src>/dist/timestring.min.js"></script>
+```
+
+### Node
+
+```bash
+npm install --save timestring
+```
+
+## Usage
+
+### Overview
 
 ```js
 var str = '1h 15m';
@@ -48,7 +70,7 @@ var time = (new Timestring()).parse(str);
 console.log(time); // will log 4500
 ```
 
-## Keywords
+### Keywords
 
 Timestring will parse the following keywords into time values:
 
@@ -69,7 +91,7 @@ var time = str.parseTime();
 console.log(time); // will log 141615
 ```
 
-## Return Time Value
+### Return Time Value
 
 By default the return time value will be in seconds. This can be changed by passing one of the following strings as an argument to `String.parseTime` or `Timestring.parse`:
 
@@ -95,7 +117,7 @@ var days = (new Timestring()).parse(str, 'd'); // 0.9277777777777778
 var weeks = (new Timestring()).parse(str, 'w'); // 0.13253968253968254
 ```
 
-## Optional Configuration
+### Optional Configuration
 
 A few assumptions are made by default:
 
@@ -158,34 +180,4 @@ var hoursToday = (new Timestring(settings)).parse(today, 'h'),
 
 console.log(hoursToday); // will log 7.5
 console.log(daysThisWeek); // will log 5
-```
-
-## Installation
-
-### Browser
-
-All you need to do to get timestring working in the browser is download / clone this repo and make sure you include the `dist/timestring.min.js` script on your page:
-
-```html
-<script src="<path-to-src>/dist/timestring.min.js"></script>
-```
-
-Alternatively you can you use bower to manage this dependency for you:
-
-```bash
-bower install timestring --save
-```
-
-### Node
-
-To install for a node application, navigate to the projects root folder and in your terminal type the following:
-
-```bash
-npm install timestring --save
-```
-
-In your node application you need to require the timestring module:
-
-```js
-var Timestring = require('timestring');
 ```
