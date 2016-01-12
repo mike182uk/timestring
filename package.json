@@ -11,7 +11,7 @@
   "main": "dist/lib/timestring.js",
   "version": "1.1.1",
   "devDependencies": {
-    "browserify": "^12.0.1",
+    "browserify": "^13.0.0",
     "chai": "^3.4.1",
     "codeclimate-test-reporter": "^0.1.0",
     "coveralls": "^2.11.2",
