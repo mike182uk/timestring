@@ -1,4 +1,3 @@
 {
-  "preset": "node-style-guide",
-  "requireCapitalizedComments": false
+  "preset": "node-style-guide"
 }
