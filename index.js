@@ -1,100 +1,142 @@
+var _ = require('lodash');
+
 /**
  * Exports
  */
 
-module.exports = Timestring;
+module.exports = parseTimestring;
 
 /**
- * Create a new Timestring instance
+ * Default options to use when parsing a timestring
  *
- * @param {Object} opts
- * @constructor
+ * @type {Object}
  */
 
-function Timestring(opts) {
-  var defaultOpts = {
-    hoursPerDay: 24,
-    daysPerWeek: 7,
-    weeksPerMonth: 4,
-    monthsPerYear: 12,
-  };
+var defaultOpts = {
+  hoursPerDay: 24,
+  daysPerWeek: 7,
+  weeksPerMonth: 4,
+  monthsPerYear: 12,
+};
 
-  opts = opts || {};
-  this.opts = defaultOpts;
-  for (var s in opts) { this.opts[s] = opts[s]; }
+/**
+ * Map of accepted strings to unit
+ *
+ * @type {Object}
+ */
 
-  this.units = {
-    s: ['s', 'sec', 'secs', 'second', 'seconds'],
-    m: ['m', 'min', 'mins', 'minute', 'minutes'],
-    h: ['h', 'hr', 'hrs', 'hour', 'hours'],
-    d: ['d', 'day', 'days'],
-    w: ['w', 'week', 'weeks'],
-    mth: ['mth', 'mths','month', 'months'],
-    y: ['y', 'yr', 'yrs', 'year', 'years'],
-  };
+var unitMap = {
+  s: ['s', 'sec', 'secs', 'second', 'seconds'],
+  m: ['m', 'min', 'mins', 'minute', 'minutes'],
+  h: ['h', 'hr', 'hrs', 'hour', 'hours'],
+  d: ['d', 'day', 'days'],
+  w: ['w', 'week', 'weeks'],
+  mth: ['mth', 'mths','month', 'months'],
+  y: ['y', 'yr', 'yrs', 'year', 'years'],
+};
 
-  this.unitValues = {
+/**
+ * Parse a timestring
+ *
+ * @param {string} string
+ * @param {string} [returnUnit]
+ * @param {Object} [opts]
+ * @return {number}
+ */
+
+function parseTimestring(string, returnUnit, opts) {
+  opts = _.extend(_.clone(defaultOpts), opts || {});
+
+  var totalSeconds = 0;
+  var unitValues = getUnitValues(opts);
+  var groups = string
+    .toLowerCase()
+    .replace(/[^\.\w+-]+/g, '')
+    .match(/[-+]?[0-9]+[a-z]+/g);
+
+  if (groups !== null) {
+    _.each(groups, function(group) {
+      var value = group.match(/[0-9]+/g)[0];
+      var unit = group.match(/[a-z]+/g)[0];
+
+      totalSeconds += getSeconds(value, unit, unitValues);
+    });
+  }
+
+  if (returnUnit) {
+    return convert(totalSeconds, returnUnit, unitValues);
+  }
+
+  return totalSeconds;
+}
+
+/**
+ * Get unit values based on the passed options
+ *
+ * @param {Object} opts
+ * @returns {Object}
+ */
+
+function getUnitValues(opts) {
+  var unitValues = {
     s: 1,
     m: 60,
     h: 3600,
   };
 
-  this.unitValues.d = this.opts.hoursPerDay * this.unitValues.h;
-  this.unitValues.w = this.opts.daysPerWeek * this.unitValues.d;
-  this.unitValues.mth = this.opts.weeksPerMonth * this.unitValues.w;
-  this.unitValues.y = this.opts.monthsPerYear * this.unitValues.mth;
+  unitValues.d = opts.hoursPerDay * unitValues.h;
+  unitValues.w = opts.daysPerWeek * unitValues.d;
+  unitValues.mth = opts.weeksPerMonth * unitValues.w;
+  unitValues.y = opts.monthsPerYear * unitValues.mth;
+
+  return unitValues;
 }
 
 /**
- * Parse a timestring
+ * Get the key for a unit
  *
- * @param  {string} string
- * @param  {string} returnUnit
- * @return {string}
+ * @param {string} unit
+ * @returns {string}
  */
 
-Timestring.prototype.parse = function parse(string, returnUnit) {
-  function getUnitKey(unit) {
-    for (var k in this.units) {
-      for (var u in this.units[k]) {
-        if (unit === this.units[k][u]) {
-          return k;
-        }
+function getUnitKey(unit) {
+  for (var k in unitMap) {
+    for (var u in unitMap[k]) {
+      if (unit === unitMap[k][u]) {
+        return k;
       }
     }
-
-    throw new Error('The unit [' + unit + '] is not supported by timestring');
   }
 
-  function convert(value, unit) {
-    var baseValue = this.unitValues[getUnitKey.call(this, unit)];
+  throw new Error('The unit [' + unit + '] is not supported by timestring');
+}
 
-    return value / baseValue;
-  }
+/**
+ *  Get the number of seconds for a value, based on the unit
+ *
+ * @param {number} value
+ * @param {string} unit
+ * @param {Object} unitValues
+ * @returns {number}
+ */
 
-  function getSeconds(value, unit) {
-    var baseValue = this.unitValues[getUnitKey.call(this, unit)];
+function getSeconds(value, unit, unitValues) {
+  var baseValue = unitValues[getUnitKey(unit)];
 
-    return value * baseValue;
-  }
+  return value * baseValue;
+}
 
-  var totalSeconds = 0;
-  var groups = string
-                .toLowerCase()
-                .replace(/[^\.\w+-]+/g, '')
-                .match(/[-+]?[0-9]+[a-z]+/g);
+/**
+ * Convert a value from its existing unit to a new unit
+ *
+ * @param {number} value
+ * @param {string} unit
+ * @param {Object} unitValues
+ * @returns {number}
+ */
 
-  if (groups !== null) {
-    for (var i = 0; i < groups.length; i++) {
-      var g = groups[i];
-      var value = g.match(/[0-9]+/g)[0];
-      var unit = g.match(/[a-z]+/g)[0];
+function convert(value, unit, unitValues) {
+  var baseValue = unitValues[getUnitKey(unit)];
 
-      totalSeconds += getSeconds.call(this, value, unit);
-    }
-  }
-
-  return (returnUnit) ?
-    convert.call(this, totalSeconds, returnUnit) :
-    totalSeconds;
-};
+  return value / baseValue;
+}

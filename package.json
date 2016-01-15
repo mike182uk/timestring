@@ -14,7 +14,7 @@
     "test": "mocha test.js"
   },
   "main": "index.js",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "devDependencies": {
     "chai": "^3.4.1",
     "codeclimate-test-reporter": "^0.1.0",
@@ -25,5 +25,8 @@
     "mocha": "^2.2.4",
     "mocha-lcov-reporter": "1.0.0",
     "watch": "^0.17.1"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0"
   }
 }
