@@ -98,14 +98,3 @@ Timestring.prototype.parse = function parse(string, returnUnit) {
     convert.call(this, totalSeconds, returnUnit) :
     totalSeconds;
 };
-
-/**
- * Parse a timestring
- *
- * @param  {string} unit
- * @param  {Object} opts
- * @return {string}
- */
-String.prototype.parseTime = function parseTime(unit, opts) {
-  return (new Timestring(opts)).parse(this, unit);
-};

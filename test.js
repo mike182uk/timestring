@@ -46,18 +46,4 @@ describe('timestring', function() {
   it('can parse a messy time string', function() {
     expect((new timestring()).parse('5   D a YS    4 h   2 0     mI  nS')).to.equal(447600);
   });
-
-  it('should expose a method on String.prototype that will parse the string as a timestring', function(){
-    var str = '1min';
-
-    // no arguments passed
-    expect(str.parseTime()).to.equal(60);
-
-    // units argument passed
-    expect(str.parseTime('m')).to.equal(1);
-
-    // units + options argument passed
-    str = '5h';
-    expect(str.parseTime('d', { hoursPerDay: 5 })).to.equal(1);
-  });
 });
