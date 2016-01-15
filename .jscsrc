@@ -1,4 +1,4 @@
 {
-  "preset": "jquery",
-  "esnext": true
+  "preset": "node-style-guide",
+  "requireCapitalizedComments": false
 }

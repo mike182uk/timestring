@@ -8,29 +8,20 @@
     "type": "git",
     "url": "git://github.com/mike182uk/timestring.git"
   },
-  "main": "dist/lib/timestring.js",
-  "version": "1.1.1",
+  "scripts": {
+    "sa": "jshint index.js && jscs index.js",
+    "test": "mocha test.js"
+  },
+  "main": "index.js",
+  "version": "2.0.0",
   "devDependencies": {
-    "browserify": "^12.0.1",
     "chai": "^3.4.1",
     "codeclimate-test-reporter": "^0.1.0",
     "coveralls": "^2.11.2",
-    "del": "^2.2.0",
-    "gulp": "^3.8.11",
-    "gulp-babel": "^6.1.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-jscs": "^3.0.2",
-    "gulp-jshint": "^2.0.0",
-    "gulp-load-plugins": "^1.2.0",
-    "gulp-mocha": "^2.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.2.0",
     "istanbul": "^0.4.1",
-    "jshint-stylish": "^2.1.0",
+    "jscs": "^2.8.0",
+    "jshint": "^2.9.1",
     "mocha": "^2.2.4",
-    "mocha-lcov-reporter": "1.0.0",
-    "run-sequence": "^1.1.0",
-    "vinyl-source-stream": "^1.1.0"
+    "mocha-lcov-reporter": "1.0.0"
   }
 }

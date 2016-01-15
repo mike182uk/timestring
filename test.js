@@ -1,7 +1,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-var timestring = require('../build/timestring');
+var timestring = require('./index');
 
 describe('timestring', function() {
   it('can parse a timestring', function() {

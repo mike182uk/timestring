@@ -11,22 +11,8 @@ Parse a human readable time string into a time based value.
 
 ## Installation
 
-### Node
-
 ```bash
 npm install --save timestring
-```
-
-### Browser
-
-```bash
-bower install --save timestring
-```
-
-Then add a reference to the script in your HTML:
-
-```html
-<script src="<path-to-src>/dist/timestring.min.js"></script>
 ```
 
 ## Usage
