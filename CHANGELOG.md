@@ -1,4 +1,9 @@
-#Changelog
+# Changelog
+
+## 3.0.0
+
+- Remove `String.parseTime`
+- Export function instead of object
 
 ## 2.0.0
 
@@ -6,7 +11,7 @@
 - Remove bower / browser specific integrations - This module can still be used client side using modern development tools like webpack, browserify etc.
 - use `node-style-guide` coding style
 
-##1.1.1
+## 1.1.1
 
 - src now uses ES6
 - use gulp instead of grunt
@@ -19,7 +24,7 @@
 - misc meta data updates
 - add sourcemaps
 
-##1.1.0
+## 1.1.0
 
 - add MIT license
 - add Changelog

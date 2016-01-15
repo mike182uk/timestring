@@ -20,21 +20,21 @@ npm install --save timestring
 ### Overview
 
 ```js
+var timestring = require('timestring');
+
 var str = '1h 15m';
-var time = str.parseTime();
+var time = timestring(str);
 
 console.log(time); // will log 4500
 ```
 
-In the example above `str` is just a plain old `String` object. A new method is added to the `String` objects prototype named `parseTime`. This method parses the string and returns a time based value.
-
-**By default the returned time value will be in seconds.**
+**By default the returned time value from `timestring` will be in seconds.**
 
 The time string can contain as many time groups as needed:
 
 ```js
 var str = '1d 3h 25m 18s';
-var time = str.parseTime();
+var time = timestring(str);
 
 console.log(time); // will log 98718
 ```
@@ -43,18 +43,9 @@ and can be as messy as you like:
 
 ```js
 var str = '1 d    3HOurS 25              min         1   8s';
-var time = str.parseTime();
+var time = timestring(str);
 
 console.log(time); // will log 98718
-```
-
-As well as using the `String` objects `parseTime` method you can create a `Timestring` object and parse the string manually:
-
-```js
-var str = '1h 15m';
-var time = (new Timestring()).parse(str);
-
-console.log(time); // will log 4500
 ```
 
 ### Keywords
@@ -73,14 +64,14 @@ Keywords can be used interchangeably:
 
 ```js
 var str = '1day 15h 20minutes 15s';
-var time = str.parseTime();
+var time = timestring(str);
 
 console.log(time); // will log 141615
 ```
 
 ### Return Time Value
 
-By default the return time value will be in seconds. This can be changed by passing one of the following strings as an argument to `String.parseTime` or `Timestring.parse`:
+By default the return time value will be in seconds. This can be changed by passing one of the following strings as an argument to `timestring`:
 
 1. `s` - Seconds
 2. `m` - Minutes
@@ -93,15 +84,9 @@ By default the return time value will be in seconds. This can be changed by pass
 ```js
 var str = '22h 16m';
 
-var hours = str.parseTime('h'); // 22.266666666666666
-var days = str.parseTime('d'); // 0.9277777777777778
-var weeks = str.parseTime('w'); // 0.13253968253968254
-
-// or
-
-var hours = (new Timestring()).parse(str, 'h'); // 22.266666666666666
-var days = (new Timestring()).parse(str, 'd'); // 0.9277777777777778
-var weeks = (new Timestring()).parse(str, 'w'); // 0.13253968253968254
+var hours = timestring(str, 'h'); // 22.266666666666666
+var days = timestring(str, 'd'); // 0.9277777777777778
+var weeks = timestring(str, 'w'); // 0.13253968253968254
 ```
 
 ### Optional Configuration
@@ -113,7 +98,7 @@ A few assumptions are made by default:
 3. There are 4 weeks per month
 4. There are 12 months per year
 
-These options can be changed by passing a options object as an argument to `String.parseTime` or to the `Timestring` objects constructor.
+These options can be changed by passing an options object as an argument to `timestring`.
 
 The following options are configurable:
 
@@ -124,17 +109,11 @@ The following options are configurable:
 
 ```js
 var str = '1d';
-
 var opts = {
 	hoursPerDay: 1
 }
 
-var time = str.parseTime('h', opts);
-
-// or
-
-var time = (new Timestring(opts)).parse(str, 'h');
-
+var time = timestring(str, 'h', opts);
 
 console.log(time); // will log 1
 ```
@@ -151,19 +130,8 @@ var opts = {
 	daysPerWeek: 5
 }
 
-// get time values from form input
-var today = document.querySelector('time-input').value,  // '1d'
-	thisWeek = document.querySelector('time-input').value; // '1w'
-
-// parse times
-var hoursToday = today.parseTime('h', opts),
-	daysThisWeek = thisWeek.parseTime('d', opts);
-
-// or
-
-var hoursToday = (new Timestring(opts)).parse(today, 'h'),
-	daysThisWeek = (new Timestring(opts)).parse(thisWeek, 'd');
-
+var hoursToday = timestring('1d', 'h', opts);
+var daysThisWeek = timestring('1w', 'd', opts);
 
 console.log(hoursToday); // will log 7.5
 console.log(daysThisWeek); // will log 5

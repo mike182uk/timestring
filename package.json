@@ -9,11 +9,12 @@
     "url": "git://github.com/mike182uk/timestring.git"
   },
   "scripts": {
+    "dev": "watch 'clear; npm test -s;' ./ -d",
     "sa": "jshint index.js && jscs index.js",
     "test": "mocha test.js"
   },
   "main": "index.js",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "devDependencies": {
     "chai": "^3.4.1",
     "codeclimate-test-reporter": "^0.2.0",
@@ -22,6 +23,10 @@
     "jscs": "^2.8.0",
     "jshint": "^2.9.1",
     "mocha": "^2.2.4",
-    "mocha-lcov-reporter": "1.0.0"
+    "mocha-lcov-reporter": "1.0.0",
+    "watch": "^0.17.1"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0"
   }
 }
