@@ -113,9 +113,9 @@ A few assumptions are made by default:
 3. There are 4 weeks per month
 4. There are 12 months per year
 
-These settings can be changed by passing a settings object as an argument to `String.parseTime` or to the `Timestring` objects constructor.
+These options can be changed by passing a options object as an argument to `String.parseTime` or to the `Timestring` objects constructor.
 
-The following settings are configurable:
+The following options are configurable:
 
 1. `hoursPerDay`
 2. `daysPerWeek`
@@ -125,28 +125,28 @@ The following settings are configurable:
 ```js
 var str = '1d';
 
-var settings = {
+var opts = {
 	hoursPerDay: 1
 }
 
-var time = str.parseTime('h', settings);
+var time = str.parseTime('h', opts);
 
 // or
 
-var time = (new Timestring(settings)).parse(str, 'h');
+var time = (new Timestring(opts)).parse(str, 'h');
 
 
 console.log(time); // will log 1
 ```
 
-In the example above `hoursPerDay` is being set to `1`. When the time string is being parsed, the return value is being specified as hours. Normally `1d` would parse to `24` hours (as by deafult there are 24 hours in a day) but because `hoursPerDay` has been set to `1`, `1d` will now only parse to `1` hour.
+In the example above `hoursPerDay` is being set to `1`. When the time string is being parsed, the return value is being specified as hours. Normally `1d` would parse to `24` hours (as by default there are 24 hours in a day) but because `hoursPerDay` has been set to `1`, `1d` will now only parse to `1` hour.
 
 This would be useful for specific application needs.
 
 *Example  - Employees of my company work 7.5 hours a day, and only work 5 days a week. In my time tracking app, when they type `1d` i want 7.5 hours to be tracked. When they type `1w` i want 5 days to be tracked etc.*
 
 ```js
-var settings = {
+var opts = {
 	hoursPerDay: 7.5,
 	daysPerWeek: 5
 }
@@ -156,13 +156,13 @@ var today = document.querySelector('time-input').value,  // '1d'
 	thisWeek = document.querySelector('time-input').value; // '1w'
 
 // parse times
-var hoursToday = today.parseTime('h', settings),
-	daysThisWeek = thisWeek.parseTime('d', settings);
+var hoursToday = today.parseTime('h', opts),
+	daysThisWeek = thisWeek.parseTime('d', opts);
 
 // or
 
-var hoursToday = (new Timestring(settings)).parse(today, 'h'),
-	daysThisWeek = (new Timestring(settings)).parse(thisWeek, 'd');
+var hoursToday = (new Timestring(opts)).parse(today, 'h'),
+	daysThisWeek = (new Timestring(opts)).parse(thisWeek, 'd');
 
 
 console.log(hoursToday); // will log 7.5

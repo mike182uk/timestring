@@ -21,15 +21,15 @@ describe('timestring', function() {
     expect((new timestring()).parse('5m', 'm')).to.equal(5);
   });
 
-  it('uses the passed settings instead of the defaults', function() {
-    var settings = {
+  it('uses the passed options instead of the defaults', function() {
+    var opts = {
       hoursPerDay: 1,
       daysPerWeek: 2,
       weeksPerMonth: 3,
       monthsPerYear: 4
     };
 
-    var ts = new timestring(settings);
+    var ts = new timestring(opts);
 
     expect(ts.parse('1d', 'h')).to.equal(1);
     expect(ts.parse('1w', 'd')).to.equal(2);
@@ -56,7 +56,7 @@ describe('timestring', function() {
     // units argument passed
     expect(str.parseTime('m')).to.equal(1);
 
-    // units + settings argument passed
+    // units + options argument passed
     str = '5h';
     expect(str.parseTime('d', { hoursPerDay: 5 })).to.equal(1);
   });
