@@ -2,6 +2,10 @@
 
 ## 2.0.0
 
+- Keep it simple: revert back to ES5, remove gulp, browserify and build steps
+- Remove bower / browser specific integrations - This module can still be used client side using modern development tools like webpack, browserify etc.
+- use `node-style-guide` coding style
+
 ##1.1.1
 
 - src now uses ES6
