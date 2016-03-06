@@ -4,6 +4,7 @@
   "description": "Parse a human readable time string into a time based value",
   "main": "index.js",
   "scripts": {
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -x test.js test.js",
     "dev": "watch 'clear; npm test -s;' ./ -d",
     "sa": "jshint index.js && jscs index.js",
     "test": "mocha test.js"
