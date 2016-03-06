@@ -6,6 +6,7 @@
 [![Coveralls](https://img.shields.io/coveralls/mike182uk/timestring/master.svg?style=flat-square)](https://coveralls.io/r/mike182uk/timestring)
 [![npm](https://img.shields.io/npm/dm/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
 [![License](https://img.shields.io/github/license/mike182uk/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
 Parse a human readable time string into a time based value.
 

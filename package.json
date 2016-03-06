@@ -19,6 +19,7 @@
     "chai": "^3.4.1",
     "codeclimate-test-reporter": "^0.3.0",
     "coveralls": "^2.11.2",
+    "cz-conventional-changelog": "^1.1.5",
     "istanbul": "^0.4.1",
     "jscs": "^2.8.0",
     "jshint": "^2.9.1",
@@ -28,5 +29,10 @@
   },
   "dependencies": {
     "lodash": "^4.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
