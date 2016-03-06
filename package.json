@@ -1,22 +1,36 @@
 {
   "name": "timestring",
+  "version": "3.0.0",
   "description": "Parse a human readable time string into a time based value",
-  "homepage": "https://github.com/mike182uk/timestring",
+  "main": "index.js",
+  "scripts": {
+    "dev": "watch 'clear; npm test -s;' ./ -d",
+    "sa": "jshint index.js && jscs index.js",
+    "test": "mocha test.js"
+  },
   "author": "Michael David Barrett <mike182uk@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/mike182uk/timestring.git"
   },
-  "scripts": {
-    "dev": "watch 'clear; npm test -s;' ./ -d",
-    "sa": "jshint index.js && jscs index.js",
-    "test": "mocha test.js"
+  "homepage": "https://github.com/mike182uk/timestring",
+  "bugs": {
+    "url": "https://github.com/mike182uk/timestring/issues"
   },
-  "main": "index.js",
-  "version": "3.0.0",
+  "keywords": [
+    "time",
+    "timestring",
+    "duration",
+    "parse",
+    "string",
+    "date"
+  ],
   "engines": {
     "node": ">=0.10"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0"
   },
   "devDependencies": {
     "chai": "^3.4.1",
@@ -29,9 +43,6 @@
     "mocha": "^2.2.4",
     "mocha-lcov-reporter": "1.2.0",
     "watch": "^0.17.1"
-  },
-  "dependencies": {
-    "lodash": "^4.0.0"
   },
   "config": {
     "commitizen": {
