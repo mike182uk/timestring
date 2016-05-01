@@ -43,7 +43,7 @@
     "jshint": "^2.9.1",
     "mocha": "^2.2.4",
     "mocha-lcov-reporter": "1.2.0",
-    "watch": "^0.17.1"
+    "watch": "^0.18.0"
   },
   "config": {
     "commitizen": {
