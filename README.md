@@ -53,13 +53,14 @@ console.log(time); // will log 98718
 
 Timestring will parse the following keywords into time values:
 
-1. `s, sec, secs, second, seconds` - will parse to seconds
-2. `m, min, mins, minute, minutes` - will parse to minutes
-3. `h, hr, hrs, hour, hours` - will parse to hours
-4. `d, day, days` - will parse to days
-5. `w, week, weeks` - will parse to weeks
-6. `mth, mths, month, months` - will parse to months
-7. `y, yr, yrs, year, years` - will parse to years
+1. `ms, milli, millisecond, milliseconds` - will parse to milliseconds
+2. `s, sec, secs, second, seconds` - will parse to seconds
+3. `m, min, mins, minute, minutes` - will parse to minutes
+4. `h, hr, hrs, hour, hours` - will parse to hours
+5. `d, day, days` - will parse to days
+6. `w, week, weeks` - will parse to weeks
+7. `mth, mths, month, months` - will parse to months
+8. `y, yr, yrs, year, years` - will parse to years
 
 Keywords can be used interchangeably:
 
@@ -74,13 +75,14 @@ console.log(time); // will log 141615
 
 By default the return time value will be in seconds. This can be changed by passing one of the following strings as an argument to `timestring`:
 
-1. `s` - Seconds
-2. `m` - Minutes
-3. `h` - Hours
-4. `d` - Days
-5. `w` - Weeks
-6. `mth` - Months
-7. `y` - Years
+1. `ms` - Milliseconds
+2. `s` - Seconds
+3. `m` - Minutes
+4. `h` - Hours
+5. `d` - Days
+6. `w` - Weeks
+7. `mth` - Months
+8. `y` - Years
 
 ```js
 var str = '22h 16m';
