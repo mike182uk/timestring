@@ -26,6 +26,7 @@ var defaultOpts = {
  */
 
 var unitMap = {
+  ms: ['ms', 'milli', 'millisecond', 'milliseconds'],
   s: ['s', 'sec', 'secs', 'second', 'seconds'],
   m: ['m', 'min', 'mins', 'minute', 'minutes'],
   h: ['h', 'hr', 'hrs', 'hour', 'hours'],
@@ -79,6 +80,7 @@ function parseTimestring(string, returnUnit, opts) {
 
 function getUnitValues(opts) {
   var unitValues = {
+    ms: 0.001,
     s: 1,
     m: 60,
     h: 3600,

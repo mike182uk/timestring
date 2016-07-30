@@ -5,6 +5,7 @@ var timestring = require('./index');
 
 describe('timestring', function() {
   it('can parse a timestring', function() {
+    expect(timestring('500ms')).to.equal(0.5);
     expect(timestring('1s')).to.equal(1);
     expect(timestring('1m')).to.equal(60);
     expect(timestring('1h')).to.equal(3600);
@@ -15,6 +16,7 @@ describe('timestring', function() {
   });
 
   it('can return a value in a specified unit', function() {
+    expect(timestring('1m', 'ms')).to.equal(60000);
     expect(timestring('5m', 's')).to.equal(300);
     expect(timestring('5m', 'm')).to.equal(5);
   });
