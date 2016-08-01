@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0
+
+- Added `ms` unit ([@mrbar42](https://github.com/mrbar42))
+
 ## 3.0.0
 
 - Remove `String.parseTime`
