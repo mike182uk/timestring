@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.2.0
+
+- Added `mon` unit ([@IanMitchell](https://github.com/IanMitchell))
+
 ## 3.1.0
 
 - Added `ms` unit ([@mrbar42](https://github.com/mrbar42))
