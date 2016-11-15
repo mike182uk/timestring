@@ -59,7 +59,7 @@ Timestring will parse the following keywords into time values:
 4. `h, hr, hrs, hour, hours` - will parse to hours
 5. `d, day, days` - will parse to days
 6. `w, week, weeks` - will parse to weeks
-7. `mth, mths, month, months` - will parse to months
+7. `mon, mth, mths, month, months` - will parse to months
 8. `y, yr, yrs, year, years` - will parse to years
 
 Keywords can be used interchangeably:

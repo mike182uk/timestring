@@ -15,6 +15,51 @@ describe('timestring', function() {
     expect(timestring('1y')).to.equal(29030400);
   });
 
+  it('can parse different unit identifiers', function() {
+    var unitMap = {
+      ms: ['ms', 'milli', 'millisecond', 'milliseconds'],
+      s: ['s', 'sec', 'secs', 'second', 'seconds'],
+      m: ['m', 'min', 'mins', 'minute', 'minutes'],
+      h: ['h', 'hr', 'hrs', 'hour', 'hours'],
+      d: ['d', 'day', 'days'],
+      w: ['w', 'week', 'weeks'],
+      mth: ['mon', 'mth', 'mths','month', 'months'],
+      y: ['y', 'yr', 'yrs', 'year', 'years'],
+    };
+
+    unitMap.ms.forEach(function(msUnit) {
+      expect(timestring('500 ' + msUnit)).to.equal(0.5);
+    });
+
+    unitMap.s.forEach(function(sUnit) {
+      expect(timestring('3 ' + sUnit)).to.equal(3);
+    });
+
+    unitMap.m.forEach(function(mUnit) {
+      expect(timestring('2 ' + mUnit)).to.equal(120);
+    });
+
+    unitMap.h.forEach(function(hUnit) {
+      expect(timestring('7 ' + hUnit)).to.equal(25200);
+    });
+
+    unitMap.d.forEach(function(dUnit) {
+      expect(timestring('4 ' + dUnit)).to.equal(345600);
+    });
+
+    unitMap.w.forEach(function(wUnit) {
+      expect(timestring('2 ' + wUnit)).to.equal(1209600);
+    });
+
+    unitMap.mth.forEach(function(mthUnit) {
+      expect(timestring('9 ' + mthUnit)).to.equal(21772800);
+    });
+
+    unitMap.y.forEach(function(yUnit) {
+      expect(timestring('1 ' + yUnit)).to.equal(29030400);
+    });
+  });
+
   it('can return a value in a specified unit', function() {
     expect(timestring('1m', 'ms')).to.equal(60000);
     expect(timestring('5m', 's')).to.equal(300);
