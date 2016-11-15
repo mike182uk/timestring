@@ -32,7 +32,7 @@ var unitMap = {
   h: ['h', 'hr', 'hrs', 'hour', 'hours'],
   d: ['d', 'day', 'days'],
   w: ['w', 'week', 'weeks'],
-  mth: ['mth', 'mths','month', 'months'],
+  mth: ['mon', 'mth', 'mths','month', 'months'],
   y: ['y', 'yr', 'yrs', 'year', 'years'],
 };
 
