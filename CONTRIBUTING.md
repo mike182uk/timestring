@@ -10,11 +10,11 @@ Please report issues via the issue tracker on [Github](https://github.com/mike18
 
 ## Pull Requests
 
-- **[Node.js coding style](https://github.com/felixge/node-style-guide)** - [JSCS](http://jscs.info/), [JSHint](http://jshint.com/). Make sure you run `npm run sa` before committing your code.
+- **[Standard JS coding style](http://standardjs.com/index.html)** - Make sure you run `npm run lint` before committing your code.
 
 - **Add tests where appropriate** - [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/)
 
-- **Document any change in behavior** - Make sure the README and any other relevant documentation are kept up-to-date.
+- **Document any change in behaviour** - Make sure the README and any other relevant documentation are kept up-to-date.
 
 - **Create topic branches** - i.e `feature/some-awesome-feature`.
 
@@ -30,12 +30,4 @@ You can run all of the tests in the project using:
 
 ```bash
 npm test
-```
-
-## Running Static Analysis Tools
-
-You can run all of the static analysis tools used by the project using:
-
-```bash
-npm run sa
 ```

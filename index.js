@@ -1,10 +1,10 @@
-var _ = require('lodash');
+var _ = require('lodash')
 
 /**
  * Exports
  */
 
-module.exports = parseTimestring;
+module.exports = parseTimestring
 
 /**
  * Default options to use when parsing a timestring
@@ -16,8 +16,8 @@ var defaultOpts = {
   hoursPerDay: 24,
   daysPerWeek: 7,
   weeksPerMonth: 4,
-  monthsPerYear: 12,
-};
+  monthsPerYear: 12
+}
 
 /**
  * Map of accepted strings to unit
@@ -32,9 +32,9 @@ var unitMap = {
   h: ['h', 'hr', 'hrs', 'hour', 'hours'],
   d: ['d', 'day', 'days'],
   w: ['w', 'week', 'weeks'],
-  mth: ['mon', 'mth', 'mths','month', 'months'],
-  y: ['y', 'yr', 'yrs', 'year', 'years'],
-};
+  mth: ['mon', 'mth', 'mths', 'month', 'months'],
+  y: ['y', 'yr', 'yrs', 'year', 'years']
+}
 
 /**
  * Parse a timestring
@@ -45,30 +45,30 @@ var unitMap = {
  * @return {number}
  */
 
-function parseTimestring(string, returnUnit, opts) {
-  opts = _.extend(_.clone(defaultOpts), opts || {});
+function parseTimestring (string, returnUnit, opts) {
+  opts = _.extend(_.clone(defaultOpts), opts || {})
 
-  var totalSeconds = 0;
-  var unitValues = getUnitValues(opts);
+  var totalSeconds = 0
+  var unitValues = getUnitValues(opts)
   var groups = string
     .toLowerCase()
-    .replace(/[^\.\w+-]+/g, '')
-    .match(/[-+]?[0-9]+[a-z]+/g);
+    .replace(/[^.\w+-]+/g, '')
+    .match(/[-+]?[0-9]+[a-z]+/g)
 
   if (groups !== null) {
-    _.each(groups, function(group) {
-      var value = group.match(/[0-9]+/g)[0];
-      var unit = group.match(/[a-z]+/g)[0];
+    _.each(groups, function (group) {
+      var value = group.match(/[0-9]+/g)[0]
+      var unit = group.match(/[a-z]+/g)[0]
 
-      totalSeconds += getSeconds(value, unit, unitValues);
-    });
+      totalSeconds += getSeconds(value, unit, unitValues)
+    })
   }
 
   if (returnUnit) {
-    return convert(totalSeconds, returnUnit, unitValues);
+    return convert(totalSeconds, returnUnit, unitValues)
   }
 
-  return totalSeconds;
+  return totalSeconds
 }
 
 /**
@@ -78,20 +78,20 @@ function parseTimestring(string, returnUnit, opts) {
  * @returns {Object}
  */
 
-function getUnitValues(opts) {
+function getUnitValues (opts) {
   var unitValues = {
     ms: 0.001,
     s: 1,
     m: 60,
-    h: 3600,
-  };
+    h: 3600
+  }
 
-  unitValues.d = opts.hoursPerDay * unitValues.h;
-  unitValues.w = opts.daysPerWeek * unitValues.d;
-  unitValues.mth = opts.weeksPerMonth * unitValues.w;
-  unitValues.y = opts.monthsPerYear * unitValues.mth;
+  unitValues.d = opts.hoursPerDay * unitValues.h
+  unitValues.w = opts.daysPerWeek * unitValues.d
+  unitValues.mth = opts.weeksPerMonth * unitValues.w
+  unitValues.y = opts.monthsPerYear * unitValues.mth
 
-  return unitValues;
+  return unitValues
 }
 
 /**
@@ -101,16 +101,16 @@ function getUnitValues(opts) {
  * @returns {string}
  */
 
-function getUnitKey(unit) {
+function getUnitKey (unit) {
   for (var k in unitMap) {
     for (var u in unitMap[k]) {
       if (unit === unitMap[k][u]) {
-        return k;
+        return k
       }
     }
   }
 
-  throw new Error('The unit [' + unit + '] is not supported by timestring');
+  throw new Error('The unit [' + unit + '] is not supported by timestring')
 }
 
 /**
@@ -122,10 +122,10 @@ function getUnitKey(unit) {
  * @returns {number}
  */
 
-function getSeconds(value, unit, unitValues) {
-  var baseValue = unitValues[getUnitKey(unit)];
+function getSeconds (value, unit, unitValues) {
+  var baseValue = unitValues[getUnitKey(unit)]
 
-  return value * baseValue;
+  return value * baseValue
 }
 
 /**
@@ -137,8 +137,8 @@ function getSeconds(value, unit, unitValues) {
  * @returns {number}
  */
 
-function convert(value, unit, unitValues) {
-  var baseValue = unitValues[getUnitKey(unit)];
+function convert (value, unit, unitValues) {
+  var baseValue = unitValues[getUnitKey(unit)]
 
-  return value / baseValue;
+  return value / baseValue
 }

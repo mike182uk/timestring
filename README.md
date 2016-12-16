@@ -21,12 +21,12 @@ npm install --save timestring
 ### Overview
 
 ```js
-var timestring = require('timestring');
+var timestring = require('timestring')
 
-var str = '1h 15m';
-var time = timestring(str);
+var str = '1h 15m'
+var time = timestring(str)
 
-console.log(time); // will log 4500
+console.log(time) // will log 4500
 ```
 
 **By default the returned time value from `timestring` will be in seconds.**
@@ -34,19 +34,19 @@ console.log(time); // will log 4500
 The time string can contain as many time groups as needed:
 
 ```js
-var str = '1d 3h 25m 18s';
-var time = timestring(str);
+var str = '1d 3h 25m 18s'
+var time = timestring(str)
 
-console.log(time); // will log 98718
+console.log(time) // will log 98718
 ```
 
 and can be as messy as you like:
 
 ```js
-var str = '1 d    3HOurS 25              min         1   8s';
-var time = timestring(str);
+var str = '1 d    3HOurS 25              min         1   8s'
+var time = timestring(str)
 
-console.log(time); // will log 98718
+console.log(time) // will log 98718
 ```
 
 ### Keywords
@@ -65,10 +65,10 @@ Timestring will parse the following keywords into time values:
 Keywords can be used interchangeably:
 
 ```js
-var str = '1day 15h 20minutes 15s';
-var time = timestring(str);
+var str = '1day 15h 20minutes 15s'
+var time = timestring(str)
 
-console.log(time); // will log 141615
+console.log(time) // will log 141615
 ```
 
 ### Return Time Value
@@ -85,11 +85,11 @@ By default the return time value will be in seconds. This can be changed by pass
 8. `y` - Years
 
 ```js
-var str = '22h 16m';
+var str = '22h 16m'
 
-var hours = timestring(str, 'h'); // 22.266666666666666
-var days = timestring(str, 'd'); // 0.9277777777777778
-var weeks = timestring(str, 'w'); // 0.13253968253968254
+var hours = timestring(str, 'h') // 22.266666666666666
+var days = timestring(str, 'd') // 0.9277777777777778
+var weeks = timestring(str, 'w') // 0.13253968253968254
 ```
 
 ### Optional Configuration
@@ -111,14 +111,14 @@ The following options are configurable:
 4. `monthsPerYear`
 
 ```js
-var str = '1d';
+var str = '1d'
 var opts = {
 	hoursPerDay: 1
 }
 
-var time = timestring(str, 'h', opts);
+var time = timestring(str, 'h', opts)
 
-console.log(time); // will log 1
+console.log(time) // will log 1
 ```
 
 In the example above `hoursPerDay` is being set to `1`. When the time string is being parsed, the return value is being specified as hours. Normally `1d` would parse to `24` hours (as by default there are 24 hours in a day) but because `hoursPerDay` has been set to `1`, `1d` will now only parse to `1` hour.
@@ -133,9 +133,9 @@ var opts = {
 	daysPerWeek: 5
 }
 
-var hoursToday = timestring('1d', 'h', opts);
-var daysThisWeek = timestring('1w', 'd', opts);
+var hoursToday = timestring('1d', 'h', opts)
+var daysThisWeek = timestring('1w', 'd', opts)
 
-console.log(hoursToday); // will log 7.5
-console.log(daysThisWeek); // will log 5
+console.log(hoursToday) // will log 7.5
+console.log(daysThisWeek) // will log 5
 ```
