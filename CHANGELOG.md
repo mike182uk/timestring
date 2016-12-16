@@ -2,11 +2,11 @@
 
 ## 3.2.0
 
-- Added `mon` unit ([@IanMitchell](https://github.com/IanMitchell))
+- Add `mon` unit ([@IanMitchell](https://github.com/IanMitchell))
 
 ## 3.1.0
 
-- Added `ms` unit ([@mrbar42](https://github.com/mrbar42))
+- Add `ms` unit ([@mrbar42](https://github.com/mrbar42))
 
 ## 3.0.0
 
