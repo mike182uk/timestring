@@ -22,8 +22,6 @@ Please report issues via the issue tracker on [Github](https://github.com/mike18
 
 - **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
 
-- **Use conventional-changelog style commit messages** - See [here](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines) for more details. This project is [commitizen](https://commitizen.github.io/cz-cli/) friendly.
-
 ## Running Tests
 
 You can run all of the tests in the project using:

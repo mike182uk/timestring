@@ -37,16 +37,10 @@
     "chai": "^3.4.1",
     "codeclimate-test-reporter": "^0.4.0",
     "coveralls": "^2.11.2",
-    "cz-conventional-changelog": "^1.1.5",
     "istanbul": "^0.4.1",
     "mocha": "^3.0.0",
     "mocha-lcov-reporter": "1.2.0",
     "standard": "^8.6.0",
     "watch": "^1.0.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
