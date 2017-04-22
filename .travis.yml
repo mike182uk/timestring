@@ -18,7 +18,8 @@ cache:
 
 env:
   global:
-    - secure: dILRjgEPjnDy8wcqSkKS4KoxSykeffpReeiRXcXNK9iJvoxNQpfEycVuC7eG4KmdHdLj8RmrPIHE3S2x+su7LD5Nly/StaxfYTWIi1++3wSLP+SlDdv9h+uy2uA6bMsP4hys2ArQ+i/P5V4r5zq1iLIf3mavIchNwTT3ThhOIso=
+    - secure: VJilnnPkpe2sgWHFHZde25Cql9CnEZibvO0o9ESI3WfikO6y8LMPmTGMbRY26rrgzwLR5mqhFJXWSLkx48jq7HETz0TTN8V8frA74kt9kE6sEU/cfM8oJMKJvkRVK3iWU0A/UkMOOaTFPyDuZXwMjaHUMuaV/5bvUpyY1mXnxOs=
+    - secure: GmqLaNFF5iD7Nef3RaOXxx5AcU0FiELVmp8Ko5lDpNFzRLnACtBIrweGNxT9kKLk+3t6tLppiuf1P/gXEIaLvSjbIl3EqVWdCoTu5mVozD7Qi3OcrIo4GE89UGPI0ENQeldpIdUNSoZDMj+pKXOev4RWQhHwMdC3XCBKJk0UJ+E=
 
 script:
   - npm run lint
@@ -26,5 +27,5 @@ script:
 
 after_script:
   - npm run cover
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-  - cat ./coverage/lcov.info | ./node_modules/codeclimate-test-reporter/bin/codeclimate.js
+  - cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
+  - cat coverage/lcov.info | node_modules/codeclimate-test-reporter/bin/codeclimate.js
