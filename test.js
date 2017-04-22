@@ -1,12 +1,14 @@
+'use strict'
+
 /* globals describe, it */
 
-var chai = require('chai')
-var expect = chai.expect
+const chai = require('chai')
+const timestring = require('./index')
 
-var timestring = require('./index')
+const expect = chai.expect
 
-describe('timestring', function () {
-  it('can parse a timestring', function () {
+describe('timestring', () => {
+  it('can parse a timestring', () => {
     expect(timestring('500ms')).to.equal(0.5)
     expect(timestring('1s')).to.equal(1)
     expect(timestring('1m')).to.equal(60)
@@ -17,8 +19,8 @@ describe('timestring', function () {
     expect(timestring('1y')).to.equal(29030400)
   })
 
-  it('can parse different unit identifiers', function () {
-    var unitMap = {
+  it('can parse different unit identifiers', () => {
+    let unitMap = {
       ms: ['ms', 'milli', 'millisecond', 'milliseconds'],
       s: ['s', 'sec', 'secs', 'second', 'seconds'],
       m: ['m', 'min', 'mins', 'minute', 'minutes'],
@@ -29,47 +31,47 @@ describe('timestring', function () {
       y: ['y', 'yr', 'yrs', 'year', 'years']
     }
 
-    unitMap.ms.forEach(function (msUnit) {
-      expect(timestring('500 ' + msUnit)).to.equal(0.5)
+    unitMap.ms.forEach(unit => {
+      expect(timestring(`500 ${unit}`)).to.equal(0.5)
     })
 
-    unitMap.s.forEach(function (sUnit) {
-      expect(timestring('3 ' + sUnit)).to.equal(3)
+    unitMap.s.forEach(unit => {
+      expect(timestring(`3 ${unit}`)).to.equal(3)
     })
 
-    unitMap.m.forEach(function (mUnit) {
-      expect(timestring('2 ' + mUnit)).to.equal(120)
+    unitMap.m.forEach(unit => {
+      expect(timestring(`2 ${unit}`)).to.equal(120)
     })
 
-    unitMap.h.forEach(function (hUnit) {
-      expect(timestring('7 ' + hUnit)).to.equal(25200)
+    unitMap.h.forEach(unit => {
+      expect(timestring(`7 ${unit}`)).to.equal(25200)
     })
 
-    unitMap.d.forEach(function (dUnit) {
-      expect(timestring('4 ' + dUnit)).to.equal(345600)
+    unitMap.d.forEach(unit => {
+      expect(timestring(`4 ${unit}`)).to.equal(345600)
     })
 
-    unitMap.w.forEach(function (wUnit) {
-      expect(timestring('2 ' + wUnit)).to.equal(1209600)
+    unitMap.w.forEach(unit => {
+      expect(timestring(`2 ${unit}`)).to.equal(1209600)
     })
 
-    unitMap.mth.forEach(function (mthUnit) {
-      expect(timestring('9 ' + mthUnit)).to.equal(21772800)
+    unitMap.mth.forEach(unit => {
+      expect(timestring(`9 ${unit}`)).to.equal(21772800)
     })
 
-    unitMap.y.forEach(function (yUnit) {
-      expect(timestring('1 ' + yUnit)).to.equal(29030400)
+    unitMap.y.forEach(unit => {
+      expect(timestring(`1 ${unit}`)).to.equal(29030400)
     })
   })
 
-  it('can return a value in a specified unit', function () {
+  it('can return a value in a specified unit', () => {
     expect(timestring('1m', 'ms')).to.equal(60000)
     expect(timestring('5m', 's')).to.equal(300)
     expect(timestring('5m', 'm')).to.equal(5)
   })
 
-  it('uses the passed options instead of the defaults', function () {
-    var opts = {
+  it('uses the passed options instead of the defaults', () => {
+    let opts = {
       hoursPerDay: 1,
       daysPerWeek: 2,
       weeksPerMonth: 3,
@@ -82,11 +84,11 @@ describe('timestring', function () {
     expect(timestring('1y', 'mth', opts)).to.equal(4)
   })
 
-  it('throws an error when an invalid unit is used in the timestring', function () {
-    expect(function () { timestring('1g') }).to.throw(Error)
+  it('throws an error when an invalid unit is used in the timestring', () => {
+    expect(() => timestring('1g')).to.throw(Error)
   })
 
-  it('can parse a messy time string', function () {
+  it('can parse a messy time string', () => {
     expect(timestring('5   D a YS    4 h   2 0     mI  nS')).to.equal(447600)
   })
 })

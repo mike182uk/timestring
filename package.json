@@ -1,6 +1,6 @@
 {
   "name": "timestring",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "Parse a human readable time string into a time based value",
   "main": "index.js",
   "scripts": {
@@ -23,15 +23,10 @@
     "time",
     "timestring",
     "duration",
-    "parse",
-    "string",
     "date"
   ],
   "engines": {
-    "node": ">=0.10"
-  },
-  "dependencies": {
-    "lodash": "^4.0.0"
+    "node": ">=4"
   },
   "devDependencies": {
     "chai": "^3.4.1",

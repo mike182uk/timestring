@@ -1,4 +1,4 @@
-# Timestring
+# timestring
 
 [![Version](https://img.shields.io/npm/v/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
 [![Build Status](https://img.shields.io/travis/mike182uk/timestring.svg?style=flat-square)](http://travis-ci.org/mike182uk/timestring)
@@ -20,10 +20,10 @@ npm install --save timestring
 ### Overview
 
 ```js
-var timestring = require('timestring')
+const timestring = require('timestring')
 
-var str = '1h 15m'
-var time = timestring(str)
+let str = '1h 15m'
+let time = timestring(str)
 
 console.log(time) // will log 4500
 ```
@@ -33,8 +33,10 @@ console.log(time) // will log 4500
 The time string can contain as many time groups as needed:
 
 ```js
-var str = '1d 3h 25m 18s'
-var time = timestring(str)
+const timestring = require('timestring')
+
+let str = '1d 3h 25m 18s'
+let time = timestring(str)
 
 console.log(time) // will log 98718
 ```
@@ -42,15 +44,17 @@ console.log(time) // will log 98718
 and can be as messy as you like:
 
 ```js
-var str = '1 d    3HOurS 25              min         1   8s'
-var time = timestring(str)
+const timestring = require('timestring')
+
+let str = '1 d    3HOurS 25              min         1   8s'
+let time = timestring(str)
 
 console.log(time) // will log 98718
 ```
 
 ### Keywords
 
-Timestring will parse the following keywords into time values:
+`timestring` will parse the following keywords into time values:
 
 1. `ms, milli, millisecond, milliseconds` - will parse to milliseconds
 2. `s, sec, secs, second, seconds` - will parse to seconds
@@ -64,8 +68,10 @@ Timestring will parse the following keywords into time values:
 Keywords can be used interchangeably:
 
 ```js
-var str = '1day 15h 20minutes 15s'
-var time = timestring(str)
+const timestring = require('timestring')
+
+let str = '1day 15h 20minutes 15s'
+let time = timestring(str)
 
 console.log(time) // will log 141615
 ```
@@ -84,11 +90,17 @@ By default the return time value will be in seconds. This can be changed by pass
 8. `y` - Years
 
 ```js
-var str = '22h 16m'
+const timestring = require('timestring')
 
-var hours = timestring(str, 'h') // 22.266666666666666
-var days = timestring(str, 'd') // 0.9277777777777778
-var weeks = timestring(str, 'w') // 0.13253968253968254
+let str = '22h 16m'
+
+let hours = timestring(str, 'h')
+let days = timestring(str, 'd')
+let weeks = timestring(str, 'w')
+
+console.log(hours) // will log 22.266666666666666
+console.log(days) // will log 0.9277777777777778
+console.log(weeks) // will log 0.13253968253968254
 ```
 
 ### Optional Configuration
@@ -110,12 +122,14 @@ The following options are configurable:
 4. `monthsPerYear`
 
 ```js
-var str = '1d'
-var opts = {
-	hoursPerDay: 1
+const timestring = require('timestring')
+
+let str = '1d'
+let opts = {
+  hoursPerDay: 1
 }
 
-var time = timestring(str, 'h', opts)
+let time = timestring(str, 'h', opts)
 
 console.log(time) // will log 1
 ```
@@ -127,13 +141,15 @@ This would be useful for specific application needs.
 *Example  - Employees of my company work 7.5 hours a day, and only work 5 days a week. In my time tracking app, when they type `1d` i want 7.5 hours to be tracked. When they type `1w` i want 5 days to be tracked etc.*
 
 ```js
-var opts = {
-	hoursPerDay: 7.5,
-	daysPerWeek: 5
+const timestring = require('timestring')
+
+let opts = {
+  hoursPerDay: 7.5,
+  daysPerWeek: 5
 }
 
-var hoursToday = timestring('1d', 'h', opts)
-var daysThisWeek = timestring('1w', 'd', opts)
+let hoursToday = timestring('1d', 'h', opts)
+let daysThisWeek = timestring('1w', 'd', opts)
 
 console.log(hoursToday) // will log 7.5
 console.log(daysThisWeek) // will log 5

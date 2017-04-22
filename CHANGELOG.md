@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.0
+
+- Drop support for Node.js `< 4.0.0`
+- Remove dependency on `lodash`
+
 ## 3.2.0
 
 - Add `mon` unit ([@IanMitchell](https://github.com/IanMitchell))

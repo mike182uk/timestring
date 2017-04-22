@@ -1,4 +1,4 @@
-var _ = require('lodash')
+'use strict'
 
 /**
  * Exports
@@ -12,7 +12,7 @@ module.exports = parseTimestring
  * @type {Object}
  */
 
-var defaultOpts = {
+const DEFAULT_OPTS = {
   hoursPerDay: 24,
   daysPerWeek: 7,
   weeksPerMonth: 4,
@@ -25,7 +25,7 @@ var defaultOpts = {
  * @type {Object}
  */
 
-var unitMap = {
+const UNIT_MAP = {
   ms: ['ms', 'milli', 'millisecond', 'milliseconds'],
   s: ['s', 'sec', 'secs', 'second', 'seconds'],
   m: ['m', 'min', 'mins', 'minute', 'minutes'],
@@ -39,26 +39,26 @@ var unitMap = {
 /**
  * Parse a timestring
  *
- * @param {string} string
- * @param {string} [returnUnit]
- * @param {Object} [opts]
- * @return {number}
+ * @param  {String} string
+ * @param  {String} returnUnit
+ * @param  {Object} opts
+ * @return {Number}
  */
 
 function parseTimestring (string, returnUnit, opts) {
-  opts = _.extend(_.clone(defaultOpts), opts || {})
+  opts = Object.assign({}, DEFAULT_OPTS, opts || {})
 
-  var totalSeconds = 0
-  var unitValues = getUnitValues(opts)
-  var groups = string
+  let totalSeconds = 0
+  let unitValues = getUnitValues(opts)
+  let groups = string
     .toLowerCase()
     .replace(/[^.\w+-]+/g, '')
     .match(/[-+]?[0-9]+[a-z]+/g)
 
   if (groups !== null) {
-    _.each(groups, function (group) {
-      var value = group.match(/[0-9]+/g)[0]
-      var unit = group.match(/[a-z]+/g)[0]
+    groups.forEach(group => {
+      let value = group.match(/[0-9]+/g)[0]
+      let unit = group.match(/[a-z]+/g)[0]
 
       totalSeconds += getSeconds(value, unit, unitValues)
     })
@@ -74,12 +74,12 @@ function parseTimestring (string, returnUnit, opts) {
 /**
  * Get unit values based on the passed options
  *
- * @param {Object} opts
+ * @param   {Object} opts
  * @returns {Object}
  */
 
 function getUnitValues (opts) {
-  var unitValues = {
+  let unitValues = {
     ms: 0.001,
     s: 1,
     m: 60,
@@ -97,48 +97,42 @@ function getUnitValues (opts) {
 /**
  * Get the key for a unit
  *
- * @param {string} unit
- * @returns {string}
+ * @param   {String} unit
+ * @returns {String}
  */
 
 function getUnitKey (unit) {
-  for (var k in unitMap) {
-    for (var u in unitMap[k]) {
-      if (unit === unitMap[k][u]) {
-        return k
-      }
+  for (let key of Object.keys(UNIT_MAP)) {
+    if (UNIT_MAP[key].indexOf(unit) > -1) {
+      return key
     }
   }
 
-  throw new Error('The unit [' + unit + '] is not supported by timestring')
+  throw new Error(`The unit [${unit}] is not supported by timestring`)
 }
 
 /**
  *  Get the number of seconds for a value, based on the unit
  *
- * @param {number} value
- * @param {string} unit
- * @param {Object} unitValues
- * @returns {number}
+ * @param   {Number} value
+ * @param   {String} unit
+ * @param   {Object} unitValues
+ * @returns {Number}
  */
 
 function getSeconds (value, unit, unitValues) {
-  var baseValue = unitValues[getUnitKey(unit)]
-
-  return value * baseValue
+  return value * unitValues[getUnitKey(unit)]
 }
 
 /**
  * Convert a value from its existing unit to a new unit
  *
- * @param {number} value
- * @param {string} unit
- * @param {Object} unitValues
- * @returns {number}
+ * @param   {Number} value
+ * @param   {String} unit
+ * @param   {Object} unitValues
+ * @returns {Number}
  */
 
 function convert (value, unit, unitValues) {
-  var baseValue = unitValues[getUnitKey(unit)]
-
-  return value / baseValue
+  return value / unitValues[getUnitKey(unit)]
 }
