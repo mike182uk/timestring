@@ -1,6 +1,6 @@
 {
   "name": "timestring",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Parse a human readable time string into a time based value",
   "main": "index.js",
   "scripts": {

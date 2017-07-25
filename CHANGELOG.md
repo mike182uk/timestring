@@ -1,5 +1,10 @@
 # Changelog
 
+## 5.0.0
+
+- Add `daysPerYear` configuration option
+- Use `daysPerYear` configuration option to convert months or years to seconds
+
 ## 4.0.0
 
 - Drop support for Node.js `< 4.0.0`

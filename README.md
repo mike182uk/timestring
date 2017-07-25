@@ -111,6 +111,7 @@ A few assumptions are made by default:
 2. There are 7 days per week
 3. There are 4 weeks per month
 4. There are 12 months per year
+5. There are 365.25 days per year
 
 These options can be changed by passing an options object as an argument to `timestring`.
 
@@ -120,6 +121,7 @@ The following options are configurable:
 2. `daysPerWeek`
 3. `weeksPerMonth`
 4. `monthsPerYear`
+5. `daysPerYear`
 
 ```js
 const timestring = require('timestring')
@@ -138,7 +140,7 @@ In the example above `hoursPerDay` is being set to `1`. When the time string is 
 
 This would be useful for specific application needs.
 
-*Example  - Employees of my company work 7.5 hours a day, and only work 5 days a week. In my time tracking app, when they type `1d` i want 7.5 hours to be tracked. When they type `1w` i want 5 days to be tracked etc.*
+*Example - Employees of my company work 7.5 hours a day, and only work 5 days a week. In my time tracking app, when they type `1d` i want 7.5 hours to be tracked. When they type `1w` i want 5 days to be tracked etc.*
 
 ```js
 const timestring = require('timestring')
@@ -154,3 +156,5 @@ let daysThisWeek = timestring('1w', 'd', opts)
 console.log(hoursToday) // will log 7.5
 console.log(daysThisWeek) // will log 5
 ```
+
+It is important to note that the `daysPerYear` configuration option will be used to convert a month or year to seconds, so if you are using custom configuration options make sure that you adjust this value to suit if you expect to be parsing timestrings containing months or years.

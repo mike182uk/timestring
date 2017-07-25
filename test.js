@@ -15,8 +15,8 @@ describe('timestring', () => {
     expect(timestring('1h')).to.equal(3600)
     expect(timestring('1d')).to.equal(86400)
     expect(timestring('1w')).to.equal(604800)
-    expect(timestring('1mth')).to.equal(2419200)
-    expect(timestring('1y')).to.equal(29030400)
+    expect(timestring('1mth')).to.equal(2629800)
+    expect(timestring('1y')).to.equal(31557600)
   })
 
   it('can parse different unit identifiers', () => {
@@ -56,11 +56,11 @@ describe('timestring', () => {
     })
 
     unitMap.mth.forEach(unit => {
-      expect(timestring(`9 ${unit}`)).to.equal(21772800)
+      expect(timestring(`9 ${unit}`)).to.equal(23668200)
     })
 
     unitMap.y.forEach(unit => {
-      expect(timestring(`1 ${unit}`)).to.equal(29030400)
+      expect(timestring(`1 ${unit}`)).to.equal(31557600)
     })
   })
 
@@ -75,12 +75,13 @@ describe('timestring', () => {
       hoursPerDay: 1,
       daysPerWeek: 2,
       weeksPerMonth: 3,
-      monthsPerYear: 4
+      monthsPerYear: 4,
+      daysPerYear: 30
     }
 
     expect(timestring('1d', 'h', opts)).to.equal(1)
     expect(timestring('1w', 'd', opts)).to.equal(2)
-    expect(timestring('1mth', 'w', opts)).to.equal(3)
+    expect(timestring('1mth', 'w', opts)).to.equal(3.75)
     expect(timestring('1y', 'mth', opts)).to.equal(4)
   })
 

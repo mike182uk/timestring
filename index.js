@@ -16,7 +16,8 @@ const DEFAULT_OPTS = {
   hoursPerDay: 24,
   daysPerWeek: 7,
   weeksPerMonth: 4,
-  monthsPerYear: 12
+  monthsPerYear: 12,
+  daysPerYear: 365.25
 }
 
 /**
@@ -88,8 +89,8 @@ function getUnitValues (opts) {
 
   unitValues.d = opts.hoursPerDay * unitValues.h
   unitValues.w = opts.daysPerWeek * unitValues.d
-  unitValues.mth = opts.weeksPerMonth * unitValues.w
-  unitValues.y = opts.monthsPerYear * unitValues.mth
+  unitValues.mth = (opts.daysPerYear / opts.monthsPerYear) * unitValues.d
+  unitValues.y = opts.daysPerYear * unitValues.d
 
   return unitValues
 }
