@@ -54,11 +54,11 @@ function parseTimestring (string, returnUnit, opts) {
   let groups = string
     .toLowerCase()
     .replace(/[^.\w+-]+/g, '')
-    .match(/[-+]?[0-9\.]+[a-z]+/g)
+    .match(/[-+]?[0-9.]+[a-z]+/g)
 
   if (groups !== null) {
     groups.forEach(group => {
-      let value = group.match(/[0-9\.]+/g)[0]
+      let value = group.match(/[0-9.]+/g)[0]
       let unit = group.match(/[a-z]+/g)[0]
 
       totalSeconds += getSeconds(value, unit, unitValues)
