@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.1
+
+- Fix issue where decimal values were not being parsed correctly ([vegeta897](https://github.com/vegeta897))
+
 ## 5.0.0
 
 - Add `daysPerYear` configuration option

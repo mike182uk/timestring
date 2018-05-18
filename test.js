@@ -92,4 +92,10 @@ describe('timestring', () => {
   it('can parse a messy time string', () => {
     expect(timestring('5   D a YS    4 h   2 0     mI  nS')).to.equal(447600)
   })
+
+  it('can parse a time string containing a decimal value', () => {
+    expect(timestring('1.5 hours')).to.equal(5400)
+    expect(timestring('2.75 mins')).to.equal(165)
+    expect(timestring('1.5 w')).to.equal(907200)
+  })
 })
