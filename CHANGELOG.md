@@ -1,5 +1,10 @@
 # Changelog
 
+## 6.0.0
+
+- Drop support for Node.js `< 8.0.0`
+- Throw an error when unable to parse a timestring ([prolink007](https://github.com/prolink007))
+
 ## 5.0.1
 
 - Fix issue where decimal values were not being parsed correctly ([vegeta897](https://github.com/vegeta897))
