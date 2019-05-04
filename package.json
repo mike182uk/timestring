@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.0.3",
     "istanbul": "^0.4.5",
     "mocha": "^6.1.4",
