@@ -87,6 +87,14 @@ describe('timestring', () => {
     expect(() => timestring('1g')).to.throw(Error)
   })
 
+  it('throws an error when no numbers are in the timestring', () => {
+    expect(() => timestring('asdf')).to.throw(Error)
+  })
+
+  it('throws an error when numbers tail the timestring', () => {
+    expect(() => timestring('asdf123')).to.throw(Error)
+  })
+
   it('can parse a messy time string', () => {
     expect(timestring('5   D a YS    4 h   2 0     mI  nS')).to.equal(447600)
   })

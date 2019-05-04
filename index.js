@@ -61,6 +61,8 @@ function parseTimestring (string, returnUnit, opts) {
 
       totalSeconds += getSeconds(value, unit, unitValues)
     })
+  } else {
+    throw new Error(`The string [${string}] is invalid for timestring`)
   }
 
   if (returnUnit) {
