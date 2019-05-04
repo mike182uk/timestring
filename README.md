@@ -157,3 +157,14 @@ console.log(daysThisWeek) // will log 5
 ```
 
 It is important to note that the `daysPerYear` configuration option will be used to convert a month or year to seconds, so if you are using custom configuration options make sure that you adjust this value to suit if you expect to be parsing timestrings containing months or years.
+
+## Notes
+
+If the string that is passed into `timestring` can not be parsed then an error will be thrown:
+
+```js
+const timestring = require('timestring')
+
+let str = 'aaabbbccc'
+let time = timestring(str) // will throw an error
+```

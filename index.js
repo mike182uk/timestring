@@ -54,16 +54,16 @@ function parseTimestring (string, returnUnit, opts) {
     .replace(/[^.\w+-]+/g, '')
     .match(/[-+]?[0-9.]+[a-z]+/g)
 
-  if (groups !== null) {
-    groups.forEach(group => {
-      let value = group.match(/[0-9.]+/g)[0]
-      let unit = group.match(/[a-z]+/g)[0]
-
-      totalSeconds += getSeconds(value, unit, unitValues)
-    })
-  } else {
-    throw new Error(`The string [${string}] is invalid for timestring`)
+  if (groups === null) {
+    throw new Error(`The string [${string}] could not be parsed by timestring`)
   }
+
+  groups.forEach(group => {
+    let value = group.match(/[0-9.]+/g)[0]
+    let unit = group.match(/[a-z]+/g)[0]
+
+    totalSeconds += getSeconds(value, unit, unitValues)
+  })
 
   if (returnUnit) {
     return convert(totalSeconds, returnUnit, unitValues)
