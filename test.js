@@ -1,9 +1,7 @@
 /* globals describe, it */
 
-const chai = require('chai')
+const { expect } = require('chai')
 const timestring = require('./index')
-
-const expect = chai.expect
 
 describe('timestring', () => {
   it('can parse a timestring', () => {
@@ -18,7 +16,7 @@ describe('timestring', () => {
   })
 
   it('can parse different unit identifiers', () => {
-    let unitMap = {
+    const unitMap = {
       ms: ['ms', 'milli', 'millisecond', 'milliseconds'],
       s: ['s', 'sec', 'secs', 'second', 'seconds'],
       m: ['m', 'min', 'mins', 'minute', 'minutes'],
@@ -69,7 +67,7 @@ describe('timestring', () => {
   })
 
   it('uses the passed options instead of the defaults', () => {
-    let opts = {
+    const opts = {
       hoursPerDay: 1,
       daysPerWeek: 2,
       weeksPerMonth: 3,
