@@ -108,5 +108,4 @@ describe('timestring', () => {
     expect(timestring(5000.006)).to.equal(5)
     expect(timestring('600000', 'm')).to.equal(10)
   })
-
 })
