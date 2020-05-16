@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node: [8, 10, 11, 12]
+        os: [ubuntu-latest]
+      fail-fast: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Setup project
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Generate test coverage
+        run: npm run cover
+
+      - name: Upload test coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: ${{matrix.os}}-node-${{ matrix.node }}
+          parallel: true
+
+  finish:
+    name: Finalise test coverage
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: coverallsapp/github-action@master
+        with:
+          parallel-finished: true
+          github-token: ${{ secrets.github_token }}
