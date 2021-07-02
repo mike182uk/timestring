@@ -102,4 +102,10 @@ describe('timestring', () => {
     expect(timestring('2.75 mins')).to.equal(165)
     expect(timestring('1.5 w')).to.equal(907200)
   })
+
+  it('can parse numbers', () => {
+    expect(timestring(300000)).to.equal(300)
+    expect(timestring(5000.006)).to.equal(5)
+    expect(timestring('600000', 'm')).to.equal(10)
+  })
 })

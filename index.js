@@ -38,7 +38,7 @@ const UNIT_MAP = {
 /**
  * Parse a timestring
  *
- * @param   {string} string
+ * @param   {string|number} string
  * @param   {string} returnUnit
  * @param   {Object} opts
  * @returns {number}
@@ -46,6 +46,10 @@ const UNIT_MAP = {
 
 function parseTimestring (string, returnUnit, opts) {
   opts = Object.assign({}, DEFAULT_OPTS, opts || {})
+
+  if (typeof string === 'number' || string.match(/^[-+]?[0-9.]+$/g)) {
+    string = parseInt(string) + 'ms'
+  }
 
   let totalSeconds = 0
   const unitValues = getUnitValues(opts)
