@@ -1,8 +1,8 @@
 # timestring
 
 [![Version](https://img.shields.io/npm/v/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/mike182uk/timestring/ci.yml?branch=master&style=flat-square)](https://github.com/mike182uk/timestring/actions/workflows/ci.yml?query=workflow%3ACI)
-[![Coveralls](https://img.shields.io/coveralls/mike182uk/timestring/master.svg?style=flat-square)](https://coveralls.io/r/mike182uk/timestring)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/mike182uk/timestring/ci.yml?branch=main&style=flat-square)](https://github.com/mike182uk/timestring/actions/workflows/ci.yml?query=workflow%3ACI)
+[![Coveralls](https://img.shields.io/coveralls/mike182uk/timestring/main.svg?style=flat-square)](https://coveralls.io/r/mike182uk/timestring)
 [![npm](https://img.shields.io/npm/dm/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
 [![License](https://img.shields.io/github/license/mike182uk/timestring.svg?style=flat-square)](https://www.npmjs.com/package/timestring)
 
