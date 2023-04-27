@@ -168,3 +168,11 @@ const timestring = require('timestring')
 let str = 'aaabbbccc'
 let time = timestring(str) // will throw an error
 ```
+
+If a number is passed into `timestring` it will be treated as a string containing milliseconds:
+
+```js
+const timestring = require('timestring')
+
+let time = timestring(3000) // 3s
+```

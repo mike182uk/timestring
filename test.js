@@ -103,7 +103,7 @@ describe('timestring', () => {
     expect(timestring('1.5 w')).to.equal(907200)
   })
 
-  it('can parse numbers', () => {
+  it('can parse a number', () => {
     expect(timestring(300000)).to.equal(300)
     expect(timestring(5000.006)).to.equal(5)
     expect(timestring('600000', 'm')).to.equal(10)

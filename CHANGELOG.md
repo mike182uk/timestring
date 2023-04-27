@@ -3,6 +3,7 @@
 ## 7.0.0
 
 - Drop support for Node.js `< 12.0.0`
+- If a numeric value is provided it is trated as a string containing milliseconds ([alexeymarunin](https://github.com/alexeymarunin))
 
 ## 6.0.0
 

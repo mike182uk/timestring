@@ -38,28 +38,28 @@ const UNIT_MAP = {
 /**
  * Parse a timestring
  *
- * @param   {string|number} string
+ * @param   {string|number} value
  * @param   {string} returnUnit
  * @param   {Object} opts
  * @returns {number}
  */
 
-function parseTimestring (string, returnUnit, opts) {
+function parseTimestring (value, returnUnit, opts) {
   opts = Object.assign({}, DEFAULT_OPTS, opts || {})
 
-  if (typeof string === 'number' || string.match(/^[-+]?[0-9.]+$/g)) {
-    string = parseInt(string) + 'ms'
+  if (typeof value === 'number' || value.match(/^[-+]?[0-9.]+$/g)) {
+    value = parseInt(value) + 'ms'
   }
 
   let totalSeconds = 0
   const unitValues = getUnitValues(opts)
-  const groups = string
+  const groups = value
     .toLowerCase()
     .replace(/[^.\w+-]+/g, '')
     .match(/[-+]?[0-9.]+[a-z]+/g)
 
   if (groups === null) {
-    throw new Error(`The string [${string}] could not be parsed by timestring`)
+    throw new Error(`The value [${value}] could not be parsed by timestring`)
   }
 
   groups.forEach(group => {
