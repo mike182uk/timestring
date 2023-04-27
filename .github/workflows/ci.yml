@@ -50,7 +50,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: coverallsapp/github-action@master
+      - uses: coverallsapp/github-action@v1
         with:
           parallel-finished: true
           github-token: ${{ secrets.github_token }}
