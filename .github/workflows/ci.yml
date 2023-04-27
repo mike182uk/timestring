@@ -13,16 +13,16 @@ jobs:
 
     strategy:
       matrix:
-        node: [8, 10, 11, 12]
+        node: [12, 14, 16, 18, latest]
         os: [ubuntu-latest]
       fail-fast: false
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Setup node
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
@@ -39,7 +39,7 @@ jobs:
         run: npm run cover
 
       - name: Upload test coverage
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: ${{matrix.os}}-node-${{ matrix.node }}
